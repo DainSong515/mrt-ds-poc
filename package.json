@@ -1,0 +1,22 @@
+{
+  "name": "mrt-ds-poc",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "build:tokens": "echo 'tokens: no build step (JSON only)'",
+    "build:ai-index": "yarn workspace @myrealtrip/ds-ai-index build",
+    "build:mcp": "yarn workspace @myrealtrip/web-ui-mcp-server build",
+    "build:ui": "yarn workspace @myrealtrip/ds-ui build",
+    "dev:mcp": "yarn workspace @myrealtrip/web-ui-mcp-server dev",
+    "dev:docs": "yarn workspace @myrealtrip/ds-docs dev",
+    "build:docs": "yarn workspace @myrealtrip/ds-docs build",
+    "test:mcp": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\",\"params\":{}}' | node packages/mcp-server/dist/index.js",
+    "search": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"search_design_system\",\"arguments\":{\"query\":\"$QUERY\"}}}' | node packages/mcp-server/dist/index.js"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  }
+}

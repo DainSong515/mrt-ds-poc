@@ -1,0 +1,12 @@
+{
+  "name": "@myrealtrip/web-ui-tokens",
+  "version": "0.1.0",
+  "description": "MyRealTrip Design System Tokens (W3C DTCG Format)",
+  "main": "src/index.json",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo 'Tokens are JSON - no build needed'"
+  }
+}

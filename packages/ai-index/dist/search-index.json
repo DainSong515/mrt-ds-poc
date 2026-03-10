@@ -1,0 +1,617 @@
+{
+  "version": "1.0",
+  "generatedAt": "2026-03-08T15:58:30.240Z",
+  "documents": [
+    {
+      "id": "chip",
+      "path": "docs/chip.md",
+      "title": "Chip",
+      "keywords": [
+        "칩",
+        "chip",
+        "필터",
+        "filter",
+        "카테고리",
+        "category",
+        "태그",
+        "tag",
+        "선택",
+        "selected",
+        "필터바",
+        "filterbar",
+        "가로스크롤",
+        "ChipGroup",
+        "filled",
+        "outlined",
+        "기획전",
+        "분류",
+        "탭",
+        "tab"
+      ]
+    },
+    {
+      "id": "button",
+      "path": "docs/button.md",
+      "title": "Button",
+      "keywords": [
+        "버튼",
+        "button",
+        "CTA",
+        "primary",
+        "primaryOpt",
+        "secondary",
+        "secondaryOpt",
+        "tertiary",
+        "tertiaryOpt",
+        "text",
+        "variant",
+        "size",
+        "large",
+        "medium",
+        "small",
+        "xSmall",
+        "loading",
+        "로딩",
+        "disabled",
+        "비활성",
+        "비활성화",
+        "icon",
+        "아이콘",
+        "leftIcon",
+        "rightIcon",
+        "iconOnly",
+        "fullWidth",
+        "전체너비",
+        "pill",
+        "rectangle",
+        "결제",
+        "예약",
+        "클릭",
+        "click",
+        "메인",
+        "CTA버튼",
+        "검정버튼",
+        "파란버튼",
+        "shape",
+        "isCompact"
+      ]
+    },
+    {
+      "id": "text",
+      "path": "docs/text.md",
+      "title": "Text",
+      "keywords": [
+        "텍스트",
+        "text",
+        "typography",
+        "타이포그래피",
+        "display",
+        "headline",
+        "paragraph",
+        "caption",
+        "bold",
+        "normal",
+        "제목",
+        "본문",
+        "캡션",
+        "설명",
+        "lineClamp",
+        "말줄임",
+        "fontSize",
+        "글씨",
+        "글자",
+        "font",
+        "headlineBold",
+        "headlineNormal",
+        "paragraphBold",
+        "paragraphNormal",
+        "captionBold",
+        "captionNormal",
+        "displayBold"
+      ]
+    },
+    {
+      "id": "icon",
+      "path": "docs/icon.md",
+      "title": "Icon",
+      "keywords": [
+        "아이콘",
+        "icon",
+        "Ico",
+        "IcoArrowLeft",
+        "IcoArrowRight",
+        "IcoSearch",
+        "IcoHeart",
+        "IcoClose",
+        "IcoAdd",
+        "IcoDelete",
+        "IcoEdit",
+        "화살표",
+        "검색",
+        "하트",
+        "별",
+        "즐겨찾기",
+        "IcoStar",
+        "IcoBookmark",
+        "IcoCalendar",
+        "날짜",
+        "IcoFlight",
+        "항공",
+        "IcoHotel",
+        "호텔",
+        "IcoLocationOn",
+        "위치",
+        "PascalCase",
+        "IcoCheck"
+      ]
+    },
+    {
+      "id": "tokens",
+      "path": "docs/tokens.md",
+      "title": "Design Tokens",
+      "keywords": [
+        "토큰",
+        "token",
+        "색상",
+        "color",
+        "그림자",
+        "shadow",
+        "elevation",
+        "타이포그래피",
+        "typography",
+        "semantic",
+        "scale",
+        "component",
+        "디자인변수",
+        "gray",
+        "blue",
+        "red",
+        "green",
+        "yellow",
+        "purple",
+        "hex",
+        "#141719",
+        "#2b96ed",
+        "#ec4937",
+        "#27ab86",
+        "surface",
+        "content",
+        "border",
+        "interactive",
+        "의미",
+        "참조",
+        "token참조"
+      ]
+    }
+  ],
+  "invertedIndex": {
+    "칩": [
+      "chip"
+    ],
+    "chip": [
+      "chip"
+    ],
+    "필터": [
+      "chip"
+    ],
+    "filter": [
+      "chip"
+    ],
+    "카테고리": [
+      "chip"
+    ],
+    "category": [
+      "chip"
+    ],
+    "태그": [
+      "chip"
+    ],
+    "tag": [
+      "chip"
+    ],
+    "선택": [
+      "chip"
+    ],
+    "selected": [
+      "chip"
+    ],
+    "필터바": [
+      "chip"
+    ],
+    "filterbar": [
+      "chip"
+    ],
+    "가로스크롤": [
+      "chip"
+    ],
+    "chipgroup": [
+      "chip"
+    ],
+    "filled": [
+      "chip"
+    ],
+    "outlined": [
+      "chip"
+    ],
+    "기획전": [
+      "chip"
+    ],
+    "분류": [
+      "chip"
+    ],
+    "탭": [
+      "chip"
+    ],
+    "tab": [
+      "chip"
+    ],
+    "버튼": [
+      "button"
+    ],
+    "button": [
+      "button"
+    ],
+    "cta": [
+      "button"
+    ],
+    "primary": [
+      "button"
+    ],
+    "primaryopt": [
+      "button"
+    ],
+    "secondary": [
+      "button"
+    ],
+    "secondaryopt": [
+      "button"
+    ],
+    "tertiary": [
+      "button"
+    ],
+    "tertiaryopt": [
+      "button"
+    ],
+    "text": [
+      "button",
+      "text"
+    ],
+    "variant": [
+      "button"
+    ],
+    "size": [
+      "button"
+    ],
+    "large": [
+      "button"
+    ],
+    "medium": [
+      "button"
+    ],
+    "small": [
+      "button"
+    ],
+    "xsmall": [
+      "button"
+    ],
+    "loading": [
+      "button"
+    ],
+    "로딩": [
+      "button"
+    ],
+    "disabled": [
+      "button"
+    ],
+    "비활성": [
+      "button"
+    ],
+    "비활성화": [
+      "button"
+    ],
+    "icon": [
+      "button",
+      "icon"
+    ],
+    "아이콘": [
+      "button",
+      "icon"
+    ],
+    "lefticon": [
+      "button"
+    ],
+    "righticon": [
+      "button"
+    ],
+    "icononly": [
+      "button"
+    ],
+    "fullwidth": [
+      "button"
+    ],
+    "전체너비": [
+      "button"
+    ],
+    "pill": [
+      "button"
+    ],
+    "rectangle": [
+      "button"
+    ],
+    "결제": [
+      "button"
+    ],
+    "예약": [
+      "button"
+    ],
+    "클릭": [
+      "button"
+    ],
+    "click": [
+      "button"
+    ],
+    "메인": [
+      "button"
+    ],
+    "cta버튼": [
+      "button"
+    ],
+    "검정버튼": [
+      "button"
+    ],
+    "파란버튼": [
+      "button"
+    ],
+    "shape": [
+      "button"
+    ],
+    "iscompact": [
+      "button"
+    ],
+    "텍스트": [
+      "text"
+    ],
+    "typography": [
+      "text",
+      "tokens"
+    ],
+    "타이포그래피": [
+      "text",
+      "tokens"
+    ],
+    "display": [
+      "text"
+    ],
+    "headline": [
+      "text"
+    ],
+    "paragraph": [
+      "text"
+    ],
+    "caption": [
+      "text"
+    ],
+    "bold": [
+      "text"
+    ],
+    "normal": [
+      "text"
+    ],
+    "제목": [
+      "text"
+    ],
+    "본문": [
+      "text"
+    ],
+    "캡션": [
+      "text"
+    ],
+    "설명": [
+      "text"
+    ],
+    "lineclamp": [
+      "text"
+    ],
+    "말줄임": [
+      "text"
+    ],
+    "fontsize": [
+      "text"
+    ],
+    "글씨": [
+      "text"
+    ],
+    "글자": [
+      "text"
+    ],
+    "font": [
+      "text"
+    ],
+    "headlinebold": [
+      "text"
+    ],
+    "headlinenormal": [
+      "text"
+    ],
+    "paragraphbold": [
+      "text"
+    ],
+    "paragraphnormal": [
+      "text"
+    ],
+    "captionbold": [
+      "text"
+    ],
+    "captionnormal": [
+      "text"
+    ],
+    "displaybold": [
+      "text"
+    ],
+    "ico": [
+      "icon"
+    ],
+    "icoarrowleft": [
+      "icon"
+    ],
+    "icoarrowright": [
+      "icon"
+    ],
+    "icosearch": [
+      "icon"
+    ],
+    "icoheart": [
+      "icon"
+    ],
+    "icoclose": [
+      "icon"
+    ],
+    "icoadd": [
+      "icon"
+    ],
+    "icodelete": [
+      "icon"
+    ],
+    "icoedit": [
+      "icon"
+    ],
+    "화살표": [
+      "icon"
+    ],
+    "검색": [
+      "icon"
+    ],
+    "하트": [
+      "icon"
+    ],
+    "별": [
+      "icon"
+    ],
+    "즐겨찾기": [
+      "icon"
+    ],
+    "icostar": [
+      "icon"
+    ],
+    "icobookmark": [
+      "icon"
+    ],
+    "icocalendar": [
+      "icon"
+    ],
+    "날짜": [
+      "icon"
+    ],
+    "icoflight": [
+      "icon"
+    ],
+    "항공": [
+      "icon"
+    ],
+    "icohotel": [
+      "icon"
+    ],
+    "호텔": [
+      "icon"
+    ],
+    "icolocationon": [
+      "icon"
+    ],
+    "위치": [
+      "icon"
+    ],
+    "pascalcase": [
+      "icon"
+    ],
+    "icocheck": [
+      "icon"
+    ],
+    "토큰": [
+      "tokens"
+    ],
+    "token": [
+      "tokens"
+    ],
+    "색상": [
+      "tokens"
+    ],
+    "color": [
+      "tokens"
+    ],
+    "그림자": [
+      "tokens"
+    ],
+    "shadow": [
+      "tokens"
+    ],
+    "elevation": [
+      "tokens"
+    ],
+    "semantic": [
+      "tokens"
+    ],
+    "scale": [
+      "tokens"
+    ],
+    "component": [
+      "tokens"
+    ],
+    "디자인변수": [
+      "tokens"
+    ],
+    "gray": [
+      "tokens"
+    ],
+    "blue": [
+      "tokens"
+    ],
+    "red": [
+      "tokens"
+    ],
+    "green": [
+      "tokens"
+    ],
+    "yellow": [
+      "tokens"
+    ],
+    "purple": [
+      "tokens"
+    ],
+    "hex": [
+      "tokens"
+    ],
+    "#141719": [
+      "tokens"
+    ],
+    "#2b96ed": [
+      "tokens"
+    ],
+    "#ec4937": [
+      "tokens"
+    ],
+    "#27ab86": [
+      "tokens"
+    ],
+    "surface": [
+      "tokens"
+    ],
+    "content": [
+      "tokens"
+    ],
+    "border": [
+      "tokens"
+    ],
+    "interactive": [
+      "tokens"
+    ],
+    "의미": [
+      "tokens"
+    ],
+    "참조": [
+      "tokens"
+    ],
+    "token참조": [
+      "tokens"
+    ]
+  }
+}

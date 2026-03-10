@@ -1,0 +1,629 @@
+# MyRealTrip Design System
+
+> 컴포넌트 구현 전 반드시 참조. 직접 hex 색상, 하드코딩 spacing 사용 금지.
+
+## 핵심 원칙
+
+- **variant는 정의된 값만 사용**: primary | primaryOpt | secondary | secondaryOpt | tertiary | tertiaryOpt | text
+- **색상은 반드시 토큰 참조**: 직접 hex (#141719) 하드코딩 금지, 토큰(`color.gray.1000`) 사용
+- **아이콘 이름은 Ico + PascalCase**: IcoArrowLeft, IcoSearch, IcoHeart
+- **typography는 {카테고리}{굵기}{크기} 형식**: headlineBold20, paragraphNormal14
+- **Button은 일반 `<button>` 태그 금지**: 반드시 `<Button>` 컴포넌트 사용
+
+## Import
+
+```tsx
+import { Button, Text, Icon } from '@myrealtrip/web-ui';
+```
+
+## 문서
+
+- [Button](./docs/button.md) — CTA 버튼, 7가지 variant, 4가지 size
+- [Text](./docs/text.md) — 타이포그래피, display/headline/paragraph/caption
+- [Icon](./docs/icon.md) — 247개 아이콘, Ico + PascalCase
+- [Design Tokens](./docs/tokens.md) — 색상, 그림자, 타이포그래피 토큰
+
+## 금지 패턴 (빠른 참조)
+
+```tsx
+// ❌ 일반 button 태그
+<button style={{ backgroundColor: '#141719' }}>버튼</button>
+
+// ❌ 존재하지 않는 variant
+<Button variant="solid">버튼</Button>
+<Button variant="outlined">버튼</Button>
+
+// ❌ 존재하지 않는 typography
+<Text typography="body1">텍스트</Text>
+<Text typography="title">텍스트</Text>
+
+// ❌ 아이콘 이름 잘못된 형식
+<Icon name="arrow-left" />
+<Icon name="search" />
+```
+
+## 올바른 패턴 (빠른 참조)
+
+```tsx
+// ✅ 메인 CTA
+<Button variant="primary" size="large" fullWidth onClick={handleClick}>
+  결제하기
+</Button>
+
+// ✅ 로딩 상태
+<Button variant="primaryOpt" loading={isLoading}>예약하기</Button>
+
+// ✅ 아이콘 버튼
+<Button variant="tertiary" leftIcon="IcoArrowLeft">뒤로 가기</Button>
+
+// ✅ 텍스트
+<Text as="h2" typography="headlineBold20">상품 제목</Text>
+<Text typography="paragraphNormal14" lineClamp={2}>설명...</Text>
+
+// ✅ 아이콘
+<Icon name="IcoSearch" size={24} />
+```
+
+
+---
+
+# Button
+
+마이리얼트립 디자인 시스템의 기본 버튼 컴포넌트. variant로 시각적 스타일을 결정한다.
+
+## Import
+
+```tsx
+import { Button } from '@myrealtrip/web-ui';
+```
+
+## variant
+
+| variant | 배경 | 텍스트 | 설명 |
+|---------|------|--------|------|
+| `primary` | color.gray.1000 (#141719) | color.white (#FFFFFF) | 메인 CTA. 검정 배경 흰 글씨. |
+| `primaryOpt` | color.blue.500 (#2b96ed) | color.white (#FFFFFF) | 강조 CTA. 파란 배경 흰 글씨. |
+| `secondary` | color.gray.80 (#f1f3f5) | color.gray.1000 (#141719) | 보조 액션. 밝은 회색 배경 검정 글씨. |
+| `secondaryOpt` | color.white (#FFFFFF) | color.gray.1000 (#141719) | 흰 배경 위 보조 액션. |
+| `tertiary` | color.white (#FFFFFF) | color.gray.700 (#495056) | 테두리 있는 버튼 (border: color.gray.100). |
+| `tertiaryOpt` | color.white (#FFFFFF) | color.gray.700 (#495056) | 테두리 없는 최소 강조 버튼. |
+| `text` | transparent | color.gray.1000 (#141719) | 텍스트 언더라인 인라인 링크형 버튼. |
+
+## size
+
+| size | 높이 | 패딩 | 타이포그래피 |
+|------|------|------|-------------|
+| `large` | 56px | 20px | headlineNormal18 |
+| `medium` | 48px | 16px | headlineNormal16 |
+| `small` | 40px | 12px | headlineNormal14 |
+| `xSmall` | 36px | 10px | headlineNormal14 |
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| `variant` | `'primary' | 'primaryOpt' | 'secondary' | 'secondaryOpt' | 'tertiary' | 'tertiaryOpt' | 'text'` | 'primary' | 버튼 시각적 스타일  |
+| `size` | `'large' | 'medium' | 'small' | 'xSmall'` | 'medium' | 버튼 크기  |
+| `shape` | `'pill' | 'rectangle'` | 'pill' | 버튼 테두리 형태  |
+| `leftIcon` | `IconNames` | - | 버튼 왼쪽 아이콘. 예: "IcoArrowLeft"  |
+| `rightIcon` | `IconNames` | - | 버튼 오른쪽 아이콘  |
+| `iconOnly` | `boolean` | false | 아이콘 전용 정사각형 버튼  |
+| `fullWidth` | `boolean` | false | 부모 너비를 꽉 채움  |
+| `loading` | `boolean` | false | 로딩 스피너 표시. 클릭 비활성화  |
+| `disabled` | `boolean` | false | 비활성화 상태  |
+| `isCompact` | `boolean` | false | variant='text'일 때 높이 감소  |
+| `onClick` | `(e: React.MouseEvent<HTMLButtonElement>) => void` | - | 클릭 이벤트 핸들러  |
+| `children` | `React.ReactNode` | - | 버튼 내용 **(필수)** |
+
+## 사용 예시
+
+```tsx
+// 메인 CTA (검정 버튼)
+import { Button } from '@myrealtrip/web-ui';
+
+<Button variant="primary" size="large" fullWidth onClick={() => router.push('/checkout')}>
+  결제하기
+</Button>
+```
+
+```tsx
+// 강조 CTA (파란 버튼)
+<Button variant="primaryOpt" size="large" fullWidth>
+  예약하기
+</Button>
+```
+
+```tsx
+// 로딩 상태
+<Button variant="primary" loading={isLoading}>
+  처리 중...
+</Button>
+```
+
+```tsx
+// 아이콘 + 텍스트
+<Button variant="tertiary" leftIcon="IcoArrowLeft">
+  뒤로 가기
+</Button>
+```
+
+```tsx
+// 아이콘 전용
+<Button variant="secondary" iconOnly>
+  <Icon name="IcoSearch" size={20} />
+</Button>
+```
+
+```tsx
+// 전체 너비 보조 버튼
+<Button variant="secondary" size="medium" fullWidth>
+  장바구니 담기
+</Button>
+```
+
+## 주의사항
+
+```tsx
+// ❌ 일반 button 태그 직접 스타일링
+<button style={{ backgroundColor: '#141719' }}>버튼</button>
+
+// ❌ 존재하지 않는 variant
+<Button variant="solid">버튼</Button>
+<Button variant="outlined">버튼</Button>
+<Button color="primary">버튼</Button>
+```
+
+## 키워드
+
+버튼, CTA, 클릭, variant, primary, secondary, tertiary, loading, disabled, 로딩, 비활성, 아이콘, icon, 결제, 예약
+
+
+---
+
+# Chip
+
+필터/카테고리 선택용 칩 컴포넌트. 기획전 필터바처럼 가로 스크롤 단일 선택 UI에 사용.
+
+## Import
+
+```tsx
+import { Chip, ChipGroup } from '@myrealtrip/ds-ui';
+```
+
+## variant × selected 상태
+
+| 상태 | 배경 | 텍스트 |
+|------|------|--------|
+| filled + selected | color.gray.1000 (#141719) | white |
+| filled + default | color.gray.80 (#f1f3f5) | color.gray.700 (#495056) |
+| outlined + selected | white | color.gray.1000 (#141719) + 테두리 |
+| outlined + default | white | color.gray.700 (#495056) + 테두리 gray.100 |
+
+## size
+
+| size | 높이 | 패딩 | 타이포그래피 |
+|------|------|------|-------------|
+| `medium` | 36px | 12px | headlineNormal14 |
+| `small` | 28px | 10px | captionNormal12 |
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| `selected` | boolean | false | 선택 상태 |
+| `variant` | 'filled' \| 'outlined' | 'filled' | 스타일 변형 |
+| `size` | 'medium' \| 'small' | 'medium' | 크기 |
+| `disabled` | boolean | false | 비활성화 |
+| `onClick` | () => void | - | 클릭 핸들러 |
+| `children` | ReactNode | **(필수)** | 칩 텍스트 |
+
+## 사용 예시
+
+```tsx
+// 단독 사용
+<Chip selected onClick={() => setFilter('all')}>전체</Chip>
+<Chip onClick={() => setFilter('hotel')}>호텔/리조트</Chip>
+
+// 가로 스크롤 필터바 (ChipGroup)
+<ChipGroup
+  options={[
+    { id: 'all', label: '전체' },
+    { id: 'nol', label: 'NOL 티켓' },
+    { id: 'motel', label: '모텔' },
+    { id: 'hotel', label: '호텔/리조트' },
+    { id: 'pension', label: '펜션/풀빌라' },
+  ]}
+  defaultSelected="all"
+  onChange={(id) => console.log(id)}
+/>
+```
+
+## 키워드
+
+칩, chip, 필터, filter, 카테고리, category, 태그, tag, 선택, selected, 필터바, filterbar, 가로스크롤
+
+
+---
+
+# Text
+
+마이리얼트립 디자인 시스템의 텍스트 컴포넌트. 타이포그래피 시스템을 통해 일관된 텍스트 스타일을 제공한다.
+
+## Import
+
+```tsx
+import { Text } from '@myrealtrip/web-ui';
+```
+
+## typography 네이밍 규칙
+
+`{카테고리}{굵기}{크기}`
+
+- **카테고리**: `display` / `headline` / `paragraph` / `caption`
+- **굵기**: `Bold` / `Normal`
+- **크기**: 숫자 (9~40)
+
+## 카테고리별 variant
+
+### display (랜딩, 이벤트 배너)
+displayBold40, displayBold36, displayBold32, displayNormal40, displayNormal36, displayNormal32
+
+### headline (소제목, 카드 제목)
+headlineBold28 ~ headlineBold14, headlineNormal28 ~ headlineNormal14
+
+### paragraph (본문)
+paragraphBold26 ~ paragraphBold13, paragraphNormal26 ~ paragraphNormal13
+
+### caption (부가 정보, 날짜)
+captionBold15 ~ captionBold9, captionNormal15 ~ captionNormal9
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| typography | TextTypography | (필수) | 타이포그래피 variant |
+| as | 'p' \| 'span' \| 'h1'~'h6' \| 'div' \| 'label' | 'span' | HTML 태그 |
+| color | string | - | 텍스트 색상 |
+| lineClamp | number | - | N줄 말줄임표 |
+
+## 사용 예시
+
+```tsx
+// 상품 제목
+<Text as="h2" typography="headlineBold20">
+  제주도 3박 4일 패키지
+</Text>
+
+// 2줄 제한 설명
+<Text typography="paragraphNormal14" lineClamp={2}>
+  긴 상품 설명이 여기에 들어갑니다...
+</Text>
+
+// 부가 정보 (회색)
+<Text typography="captionNormal12" color="#848c94">
+  2024년 3월 15일 출발
+</Text>
+
+// 가격 표시
+<Text typography="headlineBold24" color="#141719">
+  ₩ 299,000
+</Text>
+```
+
+## 주의사항
+
+- `typography="body1"` 같은 Material UI 스타일 variant 사용 금지
+- 일반 `<p>` 태그에 직접 스타일링 금지
+- 색상은 토큰 값 참조 권장 (예: `color.gray.500` = `#848c94`)
+
+## 키워드
+
+텍스트, 타이포그래피, typography, headline, paragraph, caption, display, 제목, 본문, 설명, 캡션
+
+
+---
+
+# Icon
+
+마이리얼트립 디자인 시스템의 아이콘 컴포넌트. 247개 아이콘을 제공한다.
+
+## Import
+
+```tsx
+import { Icon } from '@myrealtrip/web-ui';
+```
+
+## 아이콘 이름 규칙
+
+반드시 **`Ico` + PascalCase** 형식을 사용한다.
+
+✅ `IcoArrowLeft`, `IcoSearch`, `IcoHeart`
+❌ `arrow-left`, `search`, `arrowLeft`
+
+## 카테고리별 주요 아이콘
+
+### 방향/화살표
+IcoArrowLeft, IcoArrowRight, IcoArrowUp, IcoArrowDown,
+IcoChevronLeft, IcoChevronRight, IcoChevronUp, IcoChevronDown
+
+### 액션
+IcoSearch, IcoAdd, IcoClose, IcoDelete, IcoEdit,
+IcoShare, IcoDownload, IcoUpload, IcoCopy, IcoFilter
+
+### 콘텐츠
+IcoHeart, IcoHeartLine, IcoBookmark, IcoBookmarkLine,
+IcoStar, IcoStarLine, IcoCheck, IcoCheckCircle, IcoInfo
+
+### 여행
+IcoFlight, IcoHotel, IcoCalendar, IcoLocationOn,
+IcoLuggage, IcoCar, IcoBus, IcoTrain
+
+### UI
+IcoMenu, IcoHome, IcoPerson, IcoSettings,
+IcoNotification, IcoCamera, IcoImage, IcoLink
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| name | IconNames | (필수) | 아이콘 이름 (Ico + PascalCase) |
+| size | number | 24 | 아이콘 크기 (px) |
+| color | string | currentColor | 아이콘 색상 |
+
+## 사용 예시
+
+```tsx
+// 단독 사용
+<Icon name="IcoSearch" size={24} />
+<Icon name="IcoHeart" size={20} color="#ec4937" />
+
+// Button에서 사용 (권장)
+<Button variant="tertiary" leftIcon="IcoArrowLeft">뒤로</Button>
+<Button variant="primary" rightIcon="IcoArrowRight">다음</Button>
+
+// 아이콘 전용 버튼
+<Button variant="secondary" iconOnly>
+  <Icon name="IcoSearch" size={20} />
+</Button>
+```
+
+## 키워드
+
+아이콘, icon, Ico, 화살표, 검색, 하트, 별, 즐겨찾기, 방향, 액션, 여행, navigation
+
+
+---
+
+# Design Tokens
+
+마이리얼트립 디자인 시스템 토큰. 직접 hex/숫자 하드코딩 금지 — 반드시 토큰 참조.
+
+## 토큰 계층 구조
+
+```
+scale/     → 원시 값 (hex, px)
+semantic/  → 의도 기반 참조 ({color.gray.1000} 형태)
+component/ → 컴포넌트별 세부 토큰
+```
+
+## Scale 토큰 (색상)
+
+### color.black
+
+| 토큰 | 값 |
+|------|-----|
+| `color.black` | `#000000` |
+
+### color.white
+
+| 토큰 | 값 |
+|------|-----|
+| `color.white` | `#FFFFFF` |
+
+### color.gray
+
+| 토큰 | 값 |
+|------|-----|
+| `color.gray.50` | `#f8f9fa` |
+| `color.gray.60` | `#f5f6f7` |
+| `color.gray.80` | `#f1f3f5` |
+| `color.gray.100` | `#e9ecef` |
+| `color.gray.200` | `#dee2e6` |
+| `color.gray.300` | `#ced4da` |
+| `color.gray.400` | `#adb5bd` |
+| `color.gray.500` | `#848c94` |
+| `color.gray.600` | `#666d75` |
+| `color.gray.700` | `#495056` |
+| `color.gray.800` | `#343a40` |
+| `color.gray.900` | `#212529` |
+| `color.gray.1000` | `#141719` |
+
+### color.blue
+
+| 토큰 | 값 |
+|------|-----|
+| `color.blue.50` | `#f5fbff` |
+| `color.blue.80` | `#e7f4fd` |
+| `color.blue.100` | `#cbe7fd` |
+| `color.blue.200` | `#a7d4f9` |
+| `color.blue.300` | `#79bef5` |
+| `color.blue.400` | `#51abf3` |
+| `color.blue.500` | `#2b96ed` |
+| `color.blue.600` | `#1583db` |
+| `color.blue.700` | `#0a70c2` |
+| `color.blue.800` | `#025ba5` |
+| `color.blue.900` | `#01457d` |
+
+### color.green
+
+| 토큰 | 값 |
+|------|-----|
+| `color.green.50` | `#e6f8f3` |
+| `color.green.80` | `#d7f6ee` |
+| `color.green.100` | `#94e7d1` |
+| `color.green.200` | `#71d2b8` |
+| `color.green.300` | `#58caab` |
+| `color.green.400` | `#33b893` |
+| `color.green.500` | `#27ab86` |
+| `color.green.600` | `#1c9674` |
+| `color.green.700` | `#137b5e` |
+| `color.green.800` | `#10634c` |
+| `color.green.900` | `#0a4534` |
+
+### color.yellow
+
+| 토큰 | 값 |
+|------|-----|
+| `color.yellow.50` | `#fff8e1` |
+| `color.yellow.80` | `#fff2c6` |
+| `color.yellow.100` | `#ffe182` |
+| `color.yellow.200` | `#ffd74e` |
+| `color.yellow.300` | `#ffc929` |
+| `color.yellow.400` | `#ffbf00` |
+| `color.yellow.500` | `#ffad01` |
+| `color.yellow.600` | `#ff9a00` |
+| `color.yellow.700` | `#f78000` |
+| `color.yellow.800` | `#db5600` |
+| `color.yellow.900` | `#b94100` |
+
+### color.red
+
+| 토큰 | 값 |
+|------|-----|
+| `color.red.50` | `#fbf1ef` |
+| `color.red.80` | `#ffd4cc` |
+| `color.red.100` | `#ffaea1` |
+| `color.red.200` | `#ff8d7c` |
+| `color.red.300` | `#fe6a54` |
+| `color.red.400` | `#fa5b4a` |
+| `color.red.500` | `#ec4937` |
+| `color.red.600` | `#dd3c2a` |
+| `color.red.700` | `#c83323` |
+| `color.red.800` | `#aa2a1b` |
+| `color.red.900` | `#8d2115` |
+
+### color.purple
+
+| 토큰 | 값 |
+|------|-----|
+| `color.purple.50` | `#F6F0FF` |
+| `color.purple.80` | `#E6D7FE` |
+| `color.purple.100` | `#D0B4FD` |
+| `color.purple.200` | `#B080FF` |
+| `color.purple.300` | `#A26EF7` |
+| `color.purple.400` | `#9355F6` |
+| `color.purple.500` | `#8238FA` |
+| `color.purple.600` | `#7226ED` |
+| `color.purple.700` | `#520FBD` |
+| `color.purple.800` | `#3D0B8E` |
+| `color.purple.900` | `#29085E` |
+
+## Scale 토큰 (그림자)
+
+| 토큰 | 값 |
+|------|-----|
+| `shadow.E100` | `0px 0.5px 0px rgba(0, 0, 0, 0.02), 0px 1px 2px rgba(0, 0, 0, 0.03), 0px 2px 4px rgba(0, 0, 0, 0.03)` |
+| `shadow.E200` | `0px 1px 2px rgba(0, 0, 0, 0.15)` |
+| `shadow.E300` | `0px 1px 2px rgba(0, 0, 0, 0.05), 0px 4px 14px rgba(0, 0, 0, 0.1)` |
+| `shadow.E400` | `0px 1px 4px rgba(0, 0, 0, 0.03), 0px 4px 12px rgba(0, 0, 0, 0.16)` |
+| `shadow.E500` | `0px 4px 8px rgba(0, 0, 0, 0.05), 0px 8px 24px rgba(0, 0, 0, 0.2)` |
+| `shadow.E100V` | `0px -0.5px 0px rgba(0, 0, 0, 0.02), 0px -1px 2px rgba(0, 0, 0, 0.03), 0px -2px 4px rgba(0, 0, 0, 0.03)` |
+| `shadow.E200V` | `0px -1px 2px rgba(0, 0, 0, 0.15)` |
+| `shadow.E300V` | `0px -1px 2px rgba(0, 0, 0, 0.05), 0px -4px 14px rgba(0, 0, 0, 0.1)` |
+| `shadow.E400V` | `0px -1px 4px rgba(0, 0, 0, 0.03), 0px -4px 12px rgba(0, 0, 0, 0.16)` |
+| `shadow.E500V` | `0px -4px 8px rgba(0, 0, 0, 0.05), 0px -8px 24px rgba(0, 0, 0, 0.2)` |
+
+## Semantic 토큰 (색상 의도)
+
+| 토큰 | 참조 | 설명 |
+|------|------|------|
+| `color.surface.primary` | `{color.gray.1000}` | 주요 배경 (primary 버튼 배경) |
+| `color.surface.secondary` | `{color.gray.80}` | 보조 배경 (secondary 버튼 배경) |
+| `color.surface.base` | `{color.white}` | 기본 흰 배경 |
+| `color.surface.subtle` | `{color.gray.50}` | 매우 연한 배경 |
+| `color.surface.accent` | `{color.blue.50}` | 강조 배경 (파란 계열) |
+| `color.surface.danger` | `{color.red.50}` | 위험/오류 배경 |
+| `color.surface.success` | `{color.green.50}` | 성공 배경 |
+| `color.surface.warning` | `{color.yellow.50}` | 경고 배경 |
+| `color.content.primary` | `{color.gray.1000}` | 주요 텍스트 |
+| `color.content.secondary` | `{color.gray.700}` | 보조 텍스트 |
+| `color.content.tertiary` | `{color.gray.500}` | 3차 텍스트, 플레이스홀더 |
+| `color.content.disabled` | `{color.gray.300}` | 비활성 텍스트 |
+| `color.content.inverse` | `{color.white}` | 반전 텍스트 (어두운 배경 위) |
+| `color.content.accent` | `{color.blue.500}` | 강조 텍스트 (링크, 주요 액션) |
+| `color.content.danger` | `{color.red.500}` | 에러, 위험 텍스트 |
+| `color.content.success` | `{color.green.500}` | 성공 텍스트 |
+| `color.border.default` | `{color.gray.100}` | 기본 테두리 |
+| `color.border.strong` | `{color.gray.300}` | 강조 테두리 |
+| `color.border.accent` | `{color.blue.500}` | 강조 테두리 (파란) |
+| `color.border.danger` | `{color.red.500}` | 에러 테두리 |
+| `color.interactive.accent` | `{color.blue.500}` | 주요 인터랙션 (primaryOpt 버튼 배경) |
+| `color.interactive.danger` | `{color.red.500}` | 위험 인터랙션 |
+| `color.interactive.success` | `{color.green.500}` | 성공 인터랙션 |
+| `color.interactive.disabled` | `{color.gray.50}` | 비활성 인터랙션 배경 |
+
+## Component 토큰 (Button)
+
+| 토큰 | 참조/값 | 설명 |
+|------|---------|------|
+| `button.primary.background` | `{color.gray.1000}` | primary 버튼 기본 배경 |
+| `button.primary.background-hover` | `rgba(20, 23, 25, 0.9)` | primary 버튼 호버 배경 |
+| `button.primary.background-active` | `{color.gray.900}` | primary 버튼 활성 배경 |
+| `button.primary.background-disabled` | `{color.gray.50}` | primary 버튼 비활성 배경 |
+| `button.primary.content` | `{color.white}` | primary 버튼 텍스트/아이콘 |
+| `button.primary.content-disabled` | `{color.gray.300}` | primary 버튼 비활성 텍스트 |
+| `button.primaryOpt.background` | `{color.blue.500}` | primaryOpt 버튼 기본 배경 |
+| `button.primaryOpt.background-hover` | `rgba(43, 150, 237, 0.9)` | primaryOpt 버튼 호버 배경 |
+| `button.primaryOpt.background-disabled` | `{color.gray.80}` | primaryOpt 버튼 비활성 배경 |
+| `button.primaryOpt.content` | `{color.white}` | primaryOpt 버튼 텍스트/아이콘 |
+| `button.primaryOpt.content-disabled` | `{color.blue.100}` | primaryOpt 버튼 비활성 텍스트 |
+| `button.secondary.background` | `{color.gray.80}` | secondary 버튼 기본 배경 |
+| `button.secondary.background-disabled` | `{color.gray.50}` | secondary 버튼 비활성 배경 |
+| `button.secondary.content` | `{color.gray.1000}` | secondary 버튼 텍스트 |
+| `button.secondary.content-disabled` | `{color.gray.300}` | secondary 버튼 비활성 텍스트 |
+| `button.secondaryOpt.background` | `{color.white}` | secondaryOpt 버튼 기본 배경 |
+| `button.secondaryOpt.background-disabled` | `{color.gray.50}` | secondaryOpt 버튼 비활성 배경 |
+| `button.secondaryOpt.content` | `{color.gray.1000}` | secondaryOpt 버튼 텍스트 |
+| `button.secondaryOpt.content-disabled` | `{color.gray.300}` | secondaryOpt 버튼 비활성 텍스트 |
+| `button.tertiary.background` | `{color.white}` | tertiary 버튼 기본 배경 |
+| `button.tertiary.border` | `{color.gray.100}` | tertiary 버튼 테두리 |
+| `button.tertiary.content` | `{color.gray.700}` | tertiary 버튼 텍스트 |
+| `button.tertiary.content-disabled` | `{color.gray.300}` | tertiary 버튼 비활성 텍스트 |
+| `button.tertiaryOpt.background` | `{color.white}` | tertiaryOpt 버튼 기본 배경 |
+| `button.tertiaryOpt.content` | `{color.gray.700}` | tertiaryOpt 버튼 텍스트 |
+| `button.tertiaryOpt.content-disabled` | `{color.gray.300}` | tertiaryOpt 버튼 비활성 텍스트 |
+| `button.text.content` | `{color.gray.1000}` | text 버튼 텍스트 |
+| `button.text.content-disabled` | `{color.gray.300}` | text 버튼 비활성 텍스트 |
+| `button.size.large.height` | `56px` |  |
+| `button.size.large.padding-x` | `20px` |  |
+| `button.size.large.typography` | `{typography.headlineNormal18}` |  |
+| `button.size.medium.height` | `48px` |  |
+| `button.size.medium.padding-x` | `16px` |  |
+| `button.size.medium.typography` | `{typography.headlineNormal16}` |  |
+| `button.size.small.height` | `40px` |  |
+| `button.size.small.padding-x` | `12px` |  |
+| `button.size.small.typography` | `{typography.headlineNormal14}` |  |
+| `button.size.xSmall.height` | `36px` |  |
+| `button.size.xSmall.padding-x` | `10px` |  |
+| `button.size.xSmall.typography` | `{typography.headlineNormal14}` |  |
+| `button.shape.pill` | `99px` | pill 형태 테두리 반경 |
+| `button.shape.rectangle` | `4px` | rectangle 형태 테두리 반경 |
+
+## 주요 색상 빠른 참조
+
+| 토큰 | 값 | 주요 사용처 |
+|------|-----|-----------|
+| `color.gray.1000` | #141719 | primary 버튼 배경, 주요 텍스트 |
+| `color.gray.900` | #212529 | 진한 텍스트 |
+| `color.gray.700` | #495056 | 보조 텍스트 |
+| `color.gray.500` | #848c94 | 비활성 텍스트, 플레이스홀더 |
+| `color.gray.300` | #ced4da | disabled 텍스트 |
+| `color.gray.100` | #e9ecef | 테두리 |
+| `color.gray.80` | #f1f3f5 | secondary 버튼 배경 |
+| `color.blue.500` | #2b96ed | primaryOpt 버튼, 링크, 강조 |
+| `color.red.500` | #ec4937 | 에러, 위험 액션 |
+| `color.green.500` | #27ab86 | 성공, 확인 |
+
+## 키워드
+
+토큰, token, 색상, color, 그림자, shadow, 타이포그래피, typography, semantic, scale, component, 디자인 변수

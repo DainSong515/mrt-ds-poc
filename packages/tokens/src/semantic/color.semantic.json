@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "color": {
+    "surface": {
+      "primary": { "$value": "{color.gray.1000}", "$type": "color", "$description": "주요 배경 (primary 버튼 배경)" },
+      "secondary": { "$value": "{color.gray.80}", "$type": "color", "$description": "보조 배경 (secondary 버튼 배경)" },
+      "base": { "$value": "{color.white}", "$type": "color", "$description": "기본 흰 배경" },
+      "subtle": { "$value": "{color.gray.50}", "$type": "color", "$description": "매우 연한 배경" },
+      "accent": { "$value": "{color.blue.50}", "$type": "color", "$description": "강조 배경 (파란 계열)" },
+      "danger": { "$value": "{color.red.50}", "$type": "color", "$description": "위험/오류 배경" },
+      "success": { "$value": "{color.green.50}", "$type": "color", "$description": "성공 배경" },
+      "warning": { "$value": "{color.yellow.50}", "$type": "color", "$description": "경고 배경" }
+    },
+    "content": {
+      "primary": { "$value": "{color.gray.1000}", "$type": "color", "$description": "주요 텍스트" },
+      "secondary": { "$value": "{color.gray.700}", "$type": "color", "$description": "보조 텍스트" },
+      "tertiary": { "$value": "{color.gray.500}", "$type": "color", "$description": "3차 텍스트, 플레이스홀더" },
+      "disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "비활성 텍스트" },
+      "inverse": { "$value": "{color.white}", "$type": "color", "$description": "반전 텍스트 (어두운 배경 위)" },
+      "accent": { "$value": "{color.blue.500}", "$type": "color", "$description": "강조 텍스트 (링크, 주요 액션)" },
+      "danger": { "$value": "{color.red.500}", "$type": "color", "$description": "에러, 위험 텍스트" },
+      "success": { "$value": "{color.green.500}", "$type": "color", "$description": "성공 텍스트" }
+    },
+    "border": {
+      "default": { "$value": "{color.gray.100}", "$type": "color", "$description": "기본 테두리" },
+      "strong": { "$value": "{color.gray.300}", "$type": "color", "$description": "강조 테두리" },
+      "accent": { "$value": "{color.blue.500}", "$type": "color", "$description": "강조 테두리 (파란)" },
+      "danger": { "$value": "{color.red.500}", "$type": "color", "$description": "에러 테두리" }
+    },
+    "interactive": {
+      "accent": { "$value": "{color.blue.500}", "$type": "color", "$description": "주요 인터랙션 (primaryOpt 버튼 배경)" },
+      "danger": { "$value": "{color.red.500}", "$type": "color", "$description": "위험 인터랙션" },
+      "success": { "$value": "{color.green.500}", "$type": "color", "$description": "성공 인터랙션" },
+      "disabled": { "$value": "{color.gray.50}", "$type": "color", "$description": "비활성 인터랙션 배경" }
+    }
+  }
+}

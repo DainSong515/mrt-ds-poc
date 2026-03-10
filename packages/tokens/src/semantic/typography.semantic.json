@@ -1,0 +1,29 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "typography": {
+    "display": {
+      "large": { "$value": "{typography.displayBold40}", "$type": "typography", "$description": "최상위 헤드라인 (랜딩, 이벤트 배너)" },
+      "medium": { "$value": "{typography.displayBold32}", "$type": "typography", "$description": "대형 타이틀" },
+      "small": { "$value": "{typography.displayNormal32}", "$type": "typography", "$description": "서브 대형 타이틀" }
+    },
+    "title": {
+      "large": { "$value": "{typography.headlineBold28}", "$type": "typography", "$description": "페이지 제목" },
+      "medium": { "$value": "{typography.headlineBold24}", "$type": "typography", "$description": "섹션 제목" },
+      "small": { "$value": "{typography.headlineBold20}", "$type": "typography", "$description": "카드 제목" }
+    },
+    "body": {
+      "large": { "$value": "{typography.paragraphNormal18}", "$type": "typography", "$description": "주요 본문" },
+      "medium": { "$value": "{typography.paragraphNormal16}", "$type": "typography", "$description": "기본 본문" },
+      "small": { "$value": "{typography.paragraphNormal14}", "$type": "typography", "$description": "보조 본문" }
+    },
+    "label": {
+      "large": { "$value": "{typography.headlineNormal16}", "$type": "typography", "$description": "버튼 라벨 (medium 버튼)" },
+      "medium": { "$value": "{typography.headlineNormal14}", "$type": "typography", "$description": "버튼 라벨 (small/xSmall 버튼)" },
+      "small": { "$value": "{typography.captionNormal12}", "$type": "typography", "$description": "작은 라벨, 배지" }
+    },
+    "caption": {
+      "medium": { "$value": "{typography.captionNormal12}", "$type": "typography", "$description": "보조 설명, 날짜" },
+      "small": { "$value": "{typography.captionNormal11}", "$type": "typography", "$description": "최소 캡션" }
+    }
+  }
+}

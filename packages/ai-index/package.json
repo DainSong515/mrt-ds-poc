@@ -1,0 +1,17 @@
+{
+  "name": "@myrealtrip/ds-ai-index",
+  "version": "0.1.0",
+  "description": "MyRealTrip Design System AI Index - llms.txt + BM25 검색 인덱스",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && node dist/index.js",
+    "generate": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0"
+  }
+}

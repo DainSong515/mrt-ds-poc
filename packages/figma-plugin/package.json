@@ -1,0 +1,14 @@
+{
+  "name": "@myrealtrip/ds-figma-plugin",
+  "version": "0.1.0",
+  "description": "DS 후보군 컴포넌트를 Figma에 자동 생성하는 플러그인",
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "dev": "node esbuild.config.js --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.0.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.0.0"
+  }
+}

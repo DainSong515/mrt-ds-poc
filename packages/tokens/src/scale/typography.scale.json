@@ -1,0 +1,267 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "fontWeight": {
+    "bold": { "$value": 700, "$type": "fontWeight" },
+    "semiBold": { "$value": 600, "$type": "fontWeight" },
+    "medium": { "$value": 500, "$type": "fontWeight" },
+    "normal": { "$value": 400, "$type": "fontWeight" }
+  },
+  "typography": {
+    "display": {
+      "displayBold40": {
+        "$value": { "fontSize": "40px", "fontWeight": 700, "lineHeight": "124%" },
+        "$type": "typography"
+      },
+      "displayBold36": {
+        "$value": { "fontSize": "36px", "fontWeight": 700, "lineHeight": "124%" },
+        "$type": "typography"
+      },
+      "displayBold32": {
+        "$value": { "fontSize": "32px", "fontWeight": 700, "lineHeight": "124%" },
+        "$type": "typography"
+      },
+      "displayNormal40": {
+        "$value": { "fontSize": "40px", "fontWeight": 600, "lineHeight": "124%" },
+        "$type": "typography"
+      },
+      "displayNormal36": {
+        "$value": { "fontSize": "36px", "fontWeight": 600, "lineHeight": "124%" },
+        "$type": "typography"
+      },
+      "displayNormal32": {
+        "$value": { "fontSize": "32px", "fontWeight": 600, "lineHeight": "124%" },
+        "$type": "typography"
+      }
+    },
+    "headline": {
+      "headlineBold28": {
+        "$value": { "fontSize": "28px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold26": {
+        "$value": { "fontSize": "26px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold24": {
+        "$value": { "fontSize": "24px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold22": {
+        "$value": { "fontSize": "22px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold21": {
+        "$value": { "fontSize": "21px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold20": {
+        "$value": { "fontSize": "20px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold18": {
+        "$value": { "fontSize": "18px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold17": {
+        "$value": { "fontSize": "17px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold16": {
+        "$value": { "fontSize": "16px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold15": {
+        "$value": { "fontSize": "15px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineBold14": {
+        "$value": { "fontSize": "14px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "headlineNormal28": {
+        "$value": { "fontSize": "28px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal26": {
+        "$value": { "fontSize": "26px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal24": {
+        "$value": { "fontSize": "24px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal22": {
+        "$value": { "fontSize": "22px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal21": {
+        "$value": { "fontSize": "21px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal20": {
+        "$value": { "fontSize": "20px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal18": {
+        "$value": { "fontSize": "18px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal17": {
+        "$value": { "fontSize": "17px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal16": {
+        "$value": { "fontSize": "16px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal15": {
+        "$value": { "fontSize": "15px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "headlineNormal14": {
+        "$value": { "fontSize": "14px", "fontWeight": 600, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      }
+    },
+    "paragraph": {
+      "paragraphBold26": {
+        "$value": { "fontSize": "26px", "fontWeight": 600, "lineHeight": "135%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold24": {
+        "$value": { "fontSize": "24px", "fontWeight": 600, "lineHeight": "135%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold22": {
+        "$value": { "fontSize": "22px", "fontWeight": 600, "lineHeight": "135%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold21": {
+        "$value": { "fontSize": "21px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold20": {
+        "$value": { "fontSize": "20px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold18": {
+        "$value": { "fontSize": "18px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold16": {
+        "$value": { "fontSize": "16px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold15": {
+        "$value": { "fontSize": "15px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold14": {
+        "$value": { "fontSize": "14px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphBold13": {
+        "$value": { "fontSize": "13px", "fontWeight": 600, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "paragraphNormal26": {
+        "$value": { "fontSize": "26px", "fontWeight": 500, "lineHeight": "135%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal24": {
+        "$value": { "fontSize": "24px", "fontWeight": 500, "lineHeight": "135%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal22": {
+        "$value": { "fontSize": "22px", "fontWeight": 500, "lineHeight": "135%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal21": {
+        "$value": { "fontSize": "21px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal20": {
+        "$value": { "fontSize": "20px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal18": {
+        "$value": { "fontSize": "18px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal16": {
+        "$value": { "fontSize": "16px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal15": {
+        "$value": { "fontSize": "15px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal14": {
+        "$value": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.01em" },
+        "$type": "typography"
+      },
+      "paragraphNormal13": {
+        "$value": { "fontSize": "13px", "fontWeight": 500, "lineHeight": "138%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      }
+    },
+    "caption": {
+      "captionBold15": {
+        "$value": { "fontSize": "15px", "fontWeight": 700, "lineHeight": "130%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold14": {
+        "$value": { "fontSize": "14px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold13": {
+        "$value": { "fontSize": "13px", "fontWeight": 700, "lineHeight": "130%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold12": {
+        "$value": { "fontSize": "12px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold11": {
+        "$value": { "fontSize": "11px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold10": {
+        "$value": { "fontSize": "10px", "fontWeight": 700, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionBold9": {
+        "$value": { "fontSize": "9px", "fontWeight": 700, "lineHeight": "130%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal15": {
+        "$value": { "fontSize": "15px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal14": {
+        "$value": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal13": {
+        "$value": { "fontSize": "13px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal12": {
+        "$value": { "fontSize": "12px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal11": {
+        "$value": { "fontSize": "11px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal10": {
+        "$value": { "fontSize": "10px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      },
+      "captionNormal9": {
+        "$value": { "fontSize": "9px", "fontWeight": 500, "lineHeight": "124%", "letterSpacing": "-0.02em" },
+        "$type": "typography"
+      }
+    }
+  }
+}

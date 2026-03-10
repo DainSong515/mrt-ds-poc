@@ -1,0 +1,73 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "button": {
+    "primary": {
+      "background": { "$value": "{color.gray.1000}", "$type": "color", "$description": "primary 버튼 기본 배경" },
+      "background-hover": { "$value": "rgba(20, 23, 25, 0.9)", "$type": "color", "$description": "primary 버튼 호버 배경" },
+      "background-active": { "$value": "{color.gray.900}", "$type": "color", "$description": "primary 버튼 활성 배경" },
+      "background-disabled": { "$value": "{color.gray.50}", "$type": "color", "$description": "primary 버튼 비활성 배경" },
+      "content": { "$value": "{color.white}", "$type": "color", "$description": "primary 버튼 텍스트/아이콘" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "primary 버튼 비활성 텍스트" }
+    },
+    "primaryOpt": {
+      "background": { "$value": "{color.blue.500}", "$type": "color", "$description": "primaryOpt 버튼 기본 배경" },
+      "background-hover": { "$value": "rgba(43, 150, 237, 0.9)", "$type": "color", "$description": "primaryOpt 버튼 호버 배경" },
+      "background-disabled": { "$value": "{color.gray.80}", "$type": "color", "$description": "primaryOpt 버튼 비활성 배경" },
+      "content": { "$value": "{color.white}", "$type": "color", "$description": "primaryOpt 버튼 텍스트/아이콘" },
+      "content-disabled": { "$value": "{color.blue.100}", "$type": "color", "$description": "primaryOpt 버튼 비활성 텍스트" }
+    },
+    "secondary": {
+      "background": { "$value": "{color.gray.80}", "$type": "color", "$description": "secondary 버튼 기본 배경" },
+      "background-disabled": { "$value": "{color.gray.50}", "$type": "color", "$description": "secondary 버튼 비활성 배경" },
+      "content": { "$value": "{color.gray.1000}", "$type": "color", "$description": "secondary 버튼 텍스트" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "secondary 버튼 비활성 텍스트" }
+    },
+    "secondaryOpt": {
+      "background": { "$value": "{color.white}", "$type": "color", "$description": "secondaryOpt 버튼 기본 배경" },
+      "background-disabled": { "$value": "{color.gray.50}", "$type": "color", "$description": "secondaryOpt 버튼 비활성 배경" },
+      "content": { "$value": "{color.gray.1000}", "$type": "color", "$description": "secondaryOpt 버튼 텍스트" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "secondaryOpt 버튼 비활성 텍스트" }
+    },
+    "tertiary": {
+      "background": { "$value": "{color.white}", "$type": "color", "$description": "tertiary 버튼 기본 배경" },
+      "border": { "$value": "{color.gray.100}", "$type": "color", "$description": "tertiary 버튼 테두리" },
+      "content": { "$value": "{color.gray.700}", "$type": "color", "$description": "tertiary 버튼 텍스트" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "tertiary 버튼 비활성 텍스트" }
+    },
+    "tertiaryOpt": {
+      "background": { "$value": "{color.white}", "$type": "color", "$description": "tertiaryOpt 버튼 기본 배경" },
+      "content": { "$value": "{color.gray.700}", "$type": "color", "$description": "tertiaryOpt 버튼 텍스트" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "tertiaryOpt 버튼 비활성 텍스트" }
+    },
+    "text": {
+      "content": { "$value": "{color.gray.1000}", "$type": "color", "$description": "text 버튼 텍스트" },
+      "content-disabled": { "$value": "{color.gray.300}", "$type": "color", "$description": "text 버튼 비활성 텍스트" }
+    },
+    "size": {
+      "large": {
+        "height": { "$value": "56px", "$type": "dimension" },
+        "padding-x": { "$value": "20px", "$type": "dimension" },
+        "typography": { "$value": "{typography.headlineNormal18}", "$type": "typography" }
+      },
+      "medium": {
+        "height": { "$value": "48px", "$type": "dimension" },
+        "padding-x": { "$value": "16px", "$type": "dimension" },
+        "typography": { "$value": "{typography.headlineNormal16}", "$type": "typography" }
+      },
+      "small": {
+        "height": { "$value": "40px", "$type": "dimension" },
+        "padding-x": { "$value": "12px", "$type": "dimension" },
+        "typography": { "$value": "{typography.headlineNormal14}", "$type": "typography" }
+      },
+      "xSmall": {
+        "height": { "$value": "36px", "$type": "dimension" },
+        "padding-x": { "$value": "10px", "$type": "dimension" },
+        "typography": { "$value": "{typography.headlineNormal14}", "$type": "typography" }
+      }
+    },
+    "shape": {
+      "pill": { "$value": "99px", "$type": "borderRadius", "$description": "pill 형태 테두리 반경" },
+      "rectangle": { "$value": "4px", "$type": "borderRadius", "$description": "rectangle 형태 테두리 반경" }
+    }
+  }
+}

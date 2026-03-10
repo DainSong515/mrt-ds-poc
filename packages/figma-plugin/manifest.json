@@ -1,0 +1,13 @@
+{
+  "name": "MRT DS Candidate Sync",
+  "id": "mrt-ds-candidate-sync",
+  "api": "1.0.0",
+  "editorType": ["figma"],
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["https://api.github.com"],
+    "reasoning": "DS 후보군 승인 시 GitHub PR 자동 생성"
+  }
+}

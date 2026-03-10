@@ -1,0 +1,103 @@
+[
+  {
+    "id": "unified-chip",
+    "status": "in-progress",
+    "sources": [
+      "chip/FilterChip.tsx",
+      "chip/CategoryChip.tsx",
+      "chip/TagChip.tsx"
+    ],
+    "similarity": 0.92,
+    "description": "필터/카테고리/태그 Chip → selected + variant 기반 단일 Chip 컴포넌트로 통합. packages/ui/src/components/Chip/ 구현 완료.",
+    "detectedAt": "2026-03-09",
+    "notes": "기획전 필터바(전체/NOL티켓/모델/호텔리조트...) 스크린샷 기반 설계. filled/outlined 2가지 variant, medium/small 2가지 size. ChipGroup으로 가로스크롤 필터바 조합 제공."
+  },
+  {
+    "id": "unified-button",
+    "status": "completed",
+    "sources": [
+      "button/",
+      "buttonGeneral/",
+      "buttonText/"
+    ],
+    "similarity": 0.91,
+    "description": "3가지 버튼 컴포넌트 → variant 기반 단일 Button 컴포넌트로 통합. 현재 DS에 반영됨.",
+    "detectedAt": "2026-01-01"
+  },
+  {
+    "id": "unified-input",
+    "status": "pending",
+    "sources": [
+      "input/TextInput.tsx",
+      "input/SearchInput.tsx",
+      "input/NumberInput.tsx"
+    ],
+    "similarity": 0.83,
+    "description": "3가지 Input 컴포넌트 → type prop 기반 단일 Input 컴포넌트 통합 제안",
+    "detectedAt": "2026-03-09",
+    "notes": "TextInput, SearchInput, NumberInput이 동일한 Props 구조(value, onChange, placeholder, disabled)를 공유함"
+  },
+  {
+    "id": "unified-card",
+    "status": "pending",
+    "sources": [
+      "card/ProductCard.tsx",
+      "card/HotelCard.tsx",
+      "card/FlightCard.tsx",
+      "card/ActivityCard.tsx"
+    ],
+    "similarity": 0.76,
+    "description": "4가지 카드 컴포넌트 → slot 기반 단일 Card 컴포넌트 통합 제안",
+    "detectedAt": "2026-03-09",
+    "notes": "공통 구조: 이미지(상단) + 타이틀 + 부가정보 + CTA. variant로 레이아웃 분기 가능"
+  },
+  {
+    "id": "unified-badge",
+    "status": "in-progress",
+    "sources": [
+      "badge/StatusBadge.tsx",
+      "badge/CountBadge.tsx",
+      "badge/TagBadge.tsx"
+    ],
+    "similarity": 0.88,
+    "description": "3가지 Badge 컴포넌트 → variant 기반 단일 Badge 컴포넌트 통합 진행 중",
+    "detectedAt": "2026-02-15"
+  },
+  {
+    "id": "unified-modal",
+    "status": "pending",
+    "sources": [
+      "modal/BottomSheet.tsx",
+      "modal/Dialog.tsx",
+      "modal/Drawer.tsx"
+    ],
+    "similarity": 0.71,
+    "description": "모달 계열 컴포넌트 → placement prop 기반 통합 검토 중",
+    "detectedAt": "2026-03-09",
+    "notes": "Accessibility(focus trap, aria-modal) 구현이 중복됨. 공통 기반 추출 권장"
+  },
+  {
+    "id": "unified-tooltip",
+    "status": "pending",
+    "sources": [
+      "tooltip/HoverTooltip.tsx",
+      "tooltip/ClickTooltip.tsx"
+    ],
+    "similarity": 0.85,
+    "description": "HoverTooltip + ClickTooltip → placement 기반 단일 Tooltip 통합 제안",
+    "detectedAt": "2026-03-08"
+  },
+  {
+    "id": "unified-tab-bar",
+    "status": "pending",
+    "sources": [
+      "tab/AccommodationTab.tsx",
+      "tab/FlightTab.tsx",
+      "tab/CategoryTab.tsx"
+    ],
+    "similarity": 0.88,
+    "description": "여러 TabBar/Tab 컴포넌트를 tabs + activeKey 기반 단일 TabBar 컴포넌트로 통합 제안. 숙소/항공/여행 카테고리 탭 내비게이션에 사용되는 패턴.",
+    "detectedAt": "2026-03-10",
+    "notes": "이미지 기준: 선택탭(파란 텍스트 + 하단 2px 인디케이터), 미선택탭(gray.700), \"N\" 뱃지 지원. medium/small 2가지 size. frontend-dubai 내 탭 계열 컴포넌트 통합 시 이 구조 활용 권장."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "shadow": {
+    "elevation": {
+      "low": { "$value": "{shadow.E100}", "$type": "shadow", "$description": "낮은 elevation (카드, 드롭다운)" },
+      "medium": { "$value": "{shadow.E200}", "$type": "shadow", "$description": "중간 elevation (모달, 팝업)" },
+      "high": { "$value": "{shadow.E300}", "$type": "shadow", "$description": "높은 elevation (토스트, 툴팁)" },
+      "overlay": { "$value": "{shadow.E400}", "$type": "shadow", "$description": "오버레이 (바텀시트, 다이얼로그)" },
+      "top": { "$value": "{shadow.E500V}", "$type": "shadow", "$description": "상단 고정 요소 (헤더, 탭바 역방향)" }
+    }
+  }
+}
