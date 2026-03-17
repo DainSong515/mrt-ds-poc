@@ -4,20 +4,48 @@
 
 `web-ui` MCP 서버가 연결되어 있다. **컴포넌트 구현 전 반드시 MCP Tool을 호출**해서 올바른 Props를 확인한다.
 
-### 기존 4개 Tool
+### Quick Start (v0.3.0)
 ```
-Button 구현 시:    get_button_usage(variant?)
-Text 구현 시:      get_text_usage(use_case?)
-Icon 검색 시:      get_icon_usage(keyword?)
-토큰 조회 시:      get_token(name)
+1. discover_tools()              → 전체 도구 + 카테고리 확인
+2. list_components(platform?)    → 컴포넌트 목록 + 상태
+3. get_component(name, platform?) → 통합 스펙 (Props, 예시, 안티패턴)
 ```
 
-### 신규 3개 Tool (v0.2.0)
+### 도구 카테고리
+
+| Category | Tool | Description |
+|----------|------|-------------|
+| **Discovery** | `discover_tools(query?, category?)` | 전체 도구 목록 + 카테고리 (시작점) |
+| **Components** | `list_components(platform?)` | 컴포넌트 목록 + 플랫폼별 상태 |
+| **Components** | `get_component(name, platform?)` | 통합 컴포넌트 스펙 (기존 3개 대체) |
+| **Tokens** | `get_token(name)` | 토큰 이름으로 값 조회 |
+| **Tokens** | `get_semantic_token(intent)` | 의도 기반 토큰 |
+| **Search** | `search_design_system(query)` | BM25 자연어 검색 |
+| **Design Check** | `get_design_check_status()` | Figma-코드 동기화 현황 |
+| **Design Check** | `get_design_check_mismatches(component, platform?)` | 불일치 + fix 정보 |
+| **Icons** | `list_icons(category?)` | 카테고리별 아이콘 목록 |
+| **Icons** | `search_icons(keyword)` | 키워드 아이콘 검색 (한글/영문) |
+| **Candidates** | `get_ds_candidates(status?)` | DS 후보군 목록 |
+| **Candidates** | `register_ds_candidate(id, description, sources)` | 후보군 등록 |
+
+### Deprecated (하위 호환 유지)
 ```
-자연어 검색:       search_design_system(query)    예: "로딩 버튼", "텍스트 말줄임"
-의도 기반 토큰:    get_semantic_token(intent)     예: "disabled", "surface", "CTA"
-후보군 확인:       get_ds_candidates(status?)     예: "pending"
+get_button_usage → get_component("Button")
+get_text_usage   → get_component("Text")
+get_icon_usage   → search_icons(keyword)
 ```
+
+> **platform 파라미터**: `'web'`(기본) | `'ios'`. iOS 선택 시 Swift/UIKit 기반 응답 반환.
+
+## iOS 컴포넌트 매핑
+
+| Web | iOS | 프레임워크 |
+|-----|-----|-----------|
+| Button | ButtonComponent + DynamicButtonStyle | UIKit |
+| Text | TextComponent + DynamicTextStyle + UDTypography | Both |
+| Icon | IconComponent + DynamicIconStyle | UIKit |
+| Chip | TagComponent + DynamicTagStyle | UIKit |
+| TabBar | CommonTabBarView + SwiftUITabBarView | Both |
 
 ## 패키지 구조
 
@@ -29,8 +57,12 @@ packages/
       semantic/     # 의도 기반 참조 (color, shadow, typography)
       component/    # 컴포넌트별 세부 토큰 (button)
   ui/               # React 컴포넌트 (Button, Text, Icon)
+  docs/             # Docs 사이트 (React SPA)
+    src/
+      data/         # progress-board.ts, sync-mappings.ts, design-check-results.json
+      pages/        # ProgressBoardPage, DesignCheckPage 등
   ai-index/         # llms.txt + BM25 검색 인덱스 (빌드 산출물: dist/)
-  mcp-server/       # MCP 서버 (7개 Tool)
+  mcp-server/       # MCP 서버 (14개 Tool, v0.3.0)
 ```
 
 ## 빌드
@@ -41,6 +73,9 @@ cd packages/ai-index && npm run build
 
 # mcp-server 컴파일
 cd packages/mcp-server && npx tsc
+
+# docs 개발 서버
+yarn dev:docs
 
 # 전체 빌드 (turbo)
 yarn build
@@ -66,11 +101,19 @@ yarn build
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | \
   node packages/mcp-server/dist/index.js 2>/dev/null
 
-# BM25 검색 테스트
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"search_design_system","arguments":{"query":"로딩 버튼"}}}' | \
+# discover_tools 테스트
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"discover_tools","arguments":{}}}' | \
   node packages/mcp-server/dist/index.js 2>/dev/null
 
-# semantic token 테스트
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_semantic_token","arguments":{"intent":"disabled"}}}' | \
+# list_components 테스트
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"list_components","arguments":{}}}' | \
+  node packages/mcp-server/dist/index.js 2>/dev/null
+
+# design check status 테스트
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_design_check_status","arguments":{}}}' | \
+  node packages/mcp-server/dist/index.js 2>/dev/null
+
+# 하위 호환 (deprecated) 테스트
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_button_usage","arguments":{}}}' | \
   node packages/mcp-server/dist/index.js 2>/dev/null
 ```
