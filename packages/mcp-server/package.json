@@ -1,6 +1,6 @@
 {
   "name": "@myrealtrip/web-ui-mcp-server",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "MCP Server for MyRealTrip Web UI Design System",
   "main": "dist/index.js",
   "scripts": {

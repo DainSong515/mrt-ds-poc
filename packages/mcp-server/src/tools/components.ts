@@ -294,7 +294,131 @@ const ICON_METADATA = {
   ],
 };
 
-export function getButtonUsage(variant?: string, useCase?: string): string {
+// iOS 메타데이터
+const IOS_BUTTON_METADATA = {
+  name: 'ButtonComponent',
+  importPath: 'import BaseComponent',
+  modulePath: 'BaseComponent/ButtonComponent',
+  framework: 'UIKit',
+  description: 'iOS 마이리얼트립 디자인 시스템 버튼 컴포넌트. DynamicButtonStyle로 스타일을 결정한다.',
+  props: {
+    style: { type: 'DynamicButtonStyle', description: '버튼 스타일 (primary, secondary, tertiary, text 등)' },
+    title: { type: 'String', description: '버튼 텍스트' },
+    isEnabled: { type: 'Bool', default: 'true', description: '활성화 상태' },
+    leftIcon: { type: 'UIImage?', description: '왼쪽 아이콘 이미지' },
+    rightIcon: { type: 'UIImage?', description: '오른쪽 아이콘 이미지' },
+    action: { type: '(() -> Void)?', description: '탭 이벤트 핸들러' },
+  },
+  usageExamples: {
+    basic: `let button = ButtonComponent()
+button.configure(
+    style: .primary,
+    title: "로그인"
+)
+button.action = { [weak self] in
+    self?.navigateToLogin()
+}`,
+    withIcon: `let button = ButtonComponent()
+button.configure(
+    style: .tertiary,
+    title: "뒤로 가기",
+    leftIcon: UIImage(named: "ico_arrow_left")
+)`,
+    withLoading: `let button = ButtonComponent()
+button.configure(style: .primary, title: "예약하기")
+button.isLoading = true  // 로딩 스피너 표시`,
+  },
+};
+
+const IOS_TEXT_METADATA = {
+  name: 'TextComponent',
+  importPath: 'import BaseComponent\nimport DesignLayer',
+  modulePath: 'BaseComponent/TextComponent + DesignLayer/UDTypography',
+  framework: 'Both (UIKit + SwiftUI)',
+  description: 'iOS 타이포그래피 컴포넌트. DynamicTextStyle 또는 UDTypography로 스타일 적용.',
+  props: {
+    style: { type: 'DynamicTextStyle', description: '텍스트 스타일 (headlineBold20, paragraphNormal16 등)' },
+    text: { type: 'String', description: '표시할 텍스트' },
+    numberOfLines: { type: 'Int', default: '0', description: '텍스트 줄 제한 (0은 무제한)' },
+    textColor: { type: 'UIColor', description: '텍스트 색상' },
+    textAlignment: { type: 'NSTextAlignment', default: '.natural', description: '텍스트 정렬' },
+  },
+  usageExamples: {
+    basic: `let label = TextComponent()
+label.configure(
+    style: .paragraphNormal16,
+    text: "안녕하세요"
+)`,
+    heading: `let titleLabel = TextComponent()
+titleLabel.configure(
+    style: .headlineBold20,
+    text: "제주도 3박 4일 패키지"
+)`,
+    swiftUI: `// SwiftUI에서 UDTypography 사용
+Text("상품 제목")
+    .font(UDTypography.headlineBold20)
+    .foregroundColor(.udGray1000)`,
+  },
+};
+
+const IOS_ICON_METADATA = {
+  name: 'IconComponent',
+  importPath: 'import BaseComponent',
+  modulePath: 'BaseComponent/IconComponent',
+  framework: 'UIKit',
+  description: 'iOS 아이콘 컴포넌트. DynamicIconStyle로 아이콘 이름, 크기, 색상 지정.',
+  props: {
+    style: { type: 'DynamicIconStyle', description: '아이콘 스타일 (이름, 크기, 색상 포함)' },
+    iconName: { type: 'String', description: '아이콘 이름. ico_ 접두사 + snake_case. 예: ico_arrow_left, ico_search' },
+    size: { type: 'CGFloat', description: '아이콘 크기(pt)' },
+    tintColor: { type: 'UIColor', description: '아이콘 틴트 색상' },
+  },
+  usageExamples: {
+    basic: `let icon = IconComponent()
+icon.configure(
+    style: DynamicIconStyle(
+        name: "ico_search",
+        size: 24
+    )
+)`,
+    withColor: `let icon = IconComponent()
+icon.configure(
+    style: DynamicIconStyle(
+        name: "ico_heart",
+        size: 20,
+        tintColor: .udRed500
+    )
+)`,
+  },
+};
+
+export function getButtonUsage(variant?: string, useCase?: string, platform: string = 'web'): string {
+  if (platform === 'ios') {
+    let result = `# Button 컴포넌트 (iOS)\n\n`;
+    result += `**import**: \`${IOS_BUTTON_METADATA.importPath}\`\n`;
+    result += `**위치**: \`${IOS_BUTTON_METADATA.modulePath}\`\n`;
+    result += `**프레임워크**: ${IOS_BUTTON_METADATA.framework}\n\n`;
+    result += `${IOS_BUTTON_METADATA.description}\n\n`;
+
+    result += `## Props\n`;
+    for (const [key, prop] of Object.entries(IOS_BUTTON_METADATA.props)) {
+      const defaultVal = (prop as any).default ? ` (기본값: ${(prop as any).default})` : '';
+      result += `- **${key}**: \`${prop.type}\` — ${prop.description}${defaultVal}\n`;
+    }
+
+    result += `\n## 사용 예시\n`;
+    if (useCase === 'loading') {
+      result += `\`\`\`swift\n${IOS_BUTTON_METADATA.usageExamples.withLoading}\n\`\`\`\n`;
+    } else if (useCase === 'icon') {
+      result += `\`\`\`swift\n${IOS_BUTTON_METADATA.usageExamples.withIcon}\n\`\`\`\n`;
+    } else {
+      for (const [, code] of Object.entries(IOS_BUTTON_METADATA.usageExamples)) {
+        result += `\`\`\`swift\n${code}\n\`\`\`\n\n`;
+      }
+    }
+    return result;
+  }
+
   // ai-index dist 파일 우선 로드
   const dynamicDoc = loadComponentDoc('button');
   if (dynamicDoc && !variant && !useCase) {
@@ -345,7 +469,27 @@ export function getButtonUsage(variant?: string, useCase?: string): string {
   return result;
 }
 
-export function getTextUsage(useCase?: string): string {
+export function getTextUsage(useCase?: string, platform: string = 'web'): string {
+  if (platform === 'ios') {
+    let result = `# Text 컴포넌트 (iOS)\n\n`;
+    result += `**import**: \`${IOS_TEXT_METADATA.importPath}\`\n`;
+    result += `**위치**: \`${IOS_TEXT_METADATA.modulePath}\`\n`;
+    result += `**프레임워크**: ${IOS_TEXT_METADATA.framework}\n\n`;
+    result += `${IOS_TEXT_METADATA.description}\n\n`;
+
+    result += `## Props\n`;
+    for (const [key, prop] of Object.entries(IOS_TEXT_METADATA.props)) {
+      const defaultVal = (prop as any).default ? ` (기본값: ${(prop as any).default})` : '';
+      result += `- **${key}**: \`${prop.type}\` — ${prop.description}${defaultVal}\n`;
+    }
+
+    result += `\n## 사용 예시\n`;
+    for (const [label, code] of Object.entries(IOS_TEXT_METADATA.usageExamples)) {
+      result += `### ${label}\n\`\`\`swift\n${code}\n\`\`\`\n\n`;
+    }
+    return result;
+  }
+
   // ai-index dist 파일 우선 로드
   const dynamicDoc = loadComponentDoc('text');
   if (dynamicDoc && !useCase) {
@@ -385,7 +529,30 @@ export function getTextUsage(useCase?: string): string {
   return result;
 }
 
-export function getIconUsage(keyword?: string): string {
+export function getIconUsage(keyword?: string, platform: string = 'web'): string {
+  if (platform === 'ios') {
+    let result = `# Icon 컴포넌트 (iOS)\n\n`;
+    result += `**import**: \`${IOS_ICON_METADATA.importPath}\`\n`;
+    result += `**위치**: \`${IOS_ICON_METADATA.modulePath}\`\n`;
+    result += `**프레임워크**: ${IOS_ICON_METADATA.framework}\n\n`;
+    result += `${IOS_ICON_METADATA.description}\n\n`;
+
+    result += `## Props\n`;
+    for (const [key, prop] of Object.entries(IOS_ICON_METADATA.props)) {
+      result += `- **${key}**: \`${prop.type}\` — ${prop.description}\n`;
+    }
+
+    result += `\n## 네이밍 규칙\n`;
+    result += `- Web: \`Ico\` + PascalCase (예: IcoArrowLeft)\n`;
+    result += `- iOS: \`ico_\` + snake_case (예: ico_arrow_left)\n\n`;
+
+    result += `## 사용 예시\n`;
+    for (const [, code] of Object.entries(IOS_ICON_METADATA.usageExamples)) {
+      result += `\`\`\`swift\n${code}\n\`\`\`\n\n`;
+    }
+    return result;
+  }
+
   // ai-index dist 파일 우선 로드 (키워드 검색이 없을 때)
   const dynamicDoc = loadComponentDoc('icon');
   if (dynamicDoc && !keyword) {
