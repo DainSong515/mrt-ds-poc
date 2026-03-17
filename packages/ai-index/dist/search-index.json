@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generatedAt": "2026-03-08T15:58:30.240Z",
+  "generatedAt": "2026-03-13T06:08:18.719Z",
   "documents": [
     {
       "id": "chip",
@@ -26,7 +26,12 @@
         "기획전",
         "분류",
         "탭",
-        "tab"
+        "tab",
+        "iOS칩",
+        "iOS태그",
+        "TagComponent",
+        "DynamicTagStyle",
+        "ios"
       ]
     },
     {
@@ -73,7 +78,13 @@
         "검정버튼",
         "파란버튼",
         "shape",
-        "isCompact"
+        "isCompact",
+        "iOS버튼",
+        "ButtonComponent",
+        "DynamicButtonStyle",
+        "Swift",
+        "UIKit",
+        "ios"
       ]
     },
     {
@@ -107,7 +118,13 @@
         "paragraphNormal",
         "captionBold",
         "captionNormal",
-        "displayBold"
+        "displayBold",
+        "iOS텍스트",
+        "TextComponent",
+        "DynamicTextStyle",
+        "UDTypography",
+        "SwiftUI",
+        "ios"
       ]
     },
     {
@@ -142,7 +159,13 @@
         "IcoLocationOn",
         "위치",
         "PascalCase",
-        "IcoCheck"
+        "IcoCheck",
+        "iOS아이콘",
+        "IconComponent",
+        "DynamicIconStyle",
+        "ico_",
+        "snake_case",
+        "ios"
       ]
     },
     {
@@ -244,6 +267,24 @@
     ],
     "tab": [
       "chip"
+    ],
+    "ios칩": [
+      "chip"
+    ],
+    "ios태그": [
+      "chip"
+    ],
+    "tagcomponent": [
+      "chip"
+    ],
+    "dynamictagstyle": [
+      "chip"
+    ],
+    "ios": [
+      "chip",
+      "button",
+      "text",
+      "icon"
     ],
     "버튼": [
       "button"
@@ -368,6 +409,21 @@
     "iscompact": [
       "button"
     ],
+    "ios버튼": [
+      "button"
+    ],
+    "buttoncomponent": [
+      "button"
+    ],
+    "dynamicbuttonstyle": [
+      "button"
+    ],
+    "swift": [
+      "button"
+    ],
+    "uikit": [
+      "button"
+    ],
     "텍스트": [
       "text"
     ],
@@ -448,6 +504,21 @@
     "displaybold": [
       "text"
     ],
+    "ios텍스트": [
+      "text"
+    ],
+    "textcomponent": [
+      "text"
+    ],
+    "dynamictextstyle": [
+      "text"
+    ],
+    "udtypography": [
+      "text"
+    ],
+    "swiftui": [
+      "text"
+    ],
     "ico": [
       "icon"
     ],
@@ -524,6 +595,21 @@
       "icon"
     ],
     "icocheck": [
+      "icon"
+    ],
+    "ios아이콘": [
+      "icon"
+    ],
+    "iconcomponent": [
+      "icon"
+    ],
+    "dynamiciconstyle": [
+      "icon"
+    ],
+    "ico_": [
+      "icon"
+    ],
+    "snake_case": [
       "icon"
     ],
     "토큰": [

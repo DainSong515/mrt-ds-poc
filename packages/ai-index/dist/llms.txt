@@ -1,6 +1,18 @@
 # MyRealTrip Design System
 
 > 컴포넌트 구현 전 반드시 참조. 직접 hex 색상, 하드코딩 spacing 사용 금지.
+> **MCP 사용 시 `discover_tools`를 먼저 호출하세요.**
+
+## Quick Start (MCP)
+
+1. `discover_tools()` — 전체 도구 확인
+2. `list_components()` — 컴포넌트 목록 확인
+3. `get_component(name)` — 특정 컴포넌트 스펙 조회
+
+## Design Check Flow
+
+1. `get_design_check_status()` — 전체 Figma-코드 동기화 현황
+2. `get_design_check_mismatches(component)` — 불일치 상세 + 수정 정보
 
 ## 핵심 원칙
 
@@ -22,6 +34,46 @@ import { Button, Text, Icon } from '@myrealtrip/web-ui';
 - [Text](./docs/text.md) — 타이포그래피, display/headline/paragraph/caption
 - [Icon](./docs/icon.md) — 247개 아이콘, Ico + PascalCase
 - [Design Tokens](./docs/tokens.md) — 색상, 그림자, 타이포그래피 토큰
+
+## MCP Tools (v0.3.0)
+
+| Category | Tool | Description |
+|----------|------|-------------|
+| Discovery | `discover_tools` | 전체 도구 목록 + 카테고리 |
+| Components | `list_components` | 컴포넌트 목록 + 플랫폼 상태 |
+| Components | `get_component` | 통합 컴포넌트 스펙 |
+| Tokens | `get_token` | 토큰 값 조회 |
+| Tokens | `get_semantic_token` | 의도 기반 토큰 |
+| Search | `search_design_system` | BM25 자연어 검색 |
+| Design Check | `get_design_check_status` | Figma-코드 동기화 현황 |
+| Design Check | `get_design_check_mismatches` | 불일치 항목 + fix 정보 |
+| Icons | `list_icons` | 카테고리별 아이콘 목록 |
+| Icons | `search_icons` | 키워드 아이콘 검색 |
+| Candidates | `get_ds_candidates` | DS 후보군 목록 |
+| Candidates | `register_ds_candidate` | 후보군 등록 |
+
+## iOS 컴포넌트 매핑
+
+| Web (React) | iOS (Swift) | iOS 위치 | 프레임워크 |
+|-------------|-------------|----------|-----------|
+| Button | ButtonComponent + DynamicButtonStyle | BaseComponent/ | UIKit |
+| Text | TextComponent + DynamicTextStyle + UDTypography | BaseComponent/ + DesignLayer/ | Both |
+| Icon | IconComponent + DynamicIconStyle | BaseComponent/ | UIKit |
+| Chip | TagComponent + DynamicTagStyle | BaseComponent/ | UIKit |
+| TabBar | CommonTabBarView + SwiftUITabBarView | TabContainerManager/ | Both |
+
+### iOS Import 패턴
+
+```swift
+import BaseComponent    // Button, Text, Icon, Tag
+import DesignLayer      // UDTypography (SwiftUI)
+import TabContainerManager  // TabBar
+```
+
+### iOS 네이밍 규칙
+- 아이콘: `ico_` + snake_case (예: ico_arrow_left) — Web은 Ico + PascalCase
+- 스타일: Dynamic{Component}Style (예: DynamicButtonStyle, DynamicTextStyle)
+- Typography: UDTypography.headlineBold20 (SwiftUI에서 사용)
 
 ## 금지 패턴 (빠른 참조)
 

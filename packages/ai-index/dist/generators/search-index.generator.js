@@ -12,6 +12,8 @@ const COMPONENT_KEYWORDS = {
         '칩', 'chip', '필터', 'filter', '카테고리', 'category', '태그', 'tag',
         '선택', 'selected', '필터바', 'filterbar', '가로스크롤', 'ChipGroup',
         'filled', 'outlined', '기획전', '분류', '탭', 'tab',
+        // iOS
+        'iOS칩', 'iOS태그', 'TagComponent', 'DynamicTagStyle', 'ios',
     ],
     button: [
         '버튼', 'button', 'CTA', 'primary', 'primaryOpt', 'secondary', 'secondaryOpt',
@@ -20,18 +22,24 @@ const COMPONENT_KEYWORDS = {
         'leftIcon', 'rightIcon', 'iconOnly', 'fullWidth', '전체너비', 'pill', 'rectangle',
         '결제', '예약', '클릭', 'click', '메인', 'CTA버튼', '검정버튼', '파란버튼',
         'shape', 'isCompact',
+        // iOS
+        'iOS버튼', 'ButtonComponent', 'DynamicButtonStyle', 'Swift', 'UIKit', 'ios',
     ],
     text: [
         '텍스트', 'text', 'typography', '타이포그래피', 'display', 'headline', 'paragraph',
         'caption', 'bold', 'normal', '제목', '본문', '캡션', '설명', 'lineClamp',
         '말줄임', 'fontSize', '글씨', '글자', 'font', 'headlineBold', 'headlineNormal',
         'paragraphBold', 'paragraphNormal', 'captionBold', 'captionNormal', 'displayBold',
+        // iOS
+        'iOS텍스트', 'TextComponent', 'DynamicTextStyle', 'UDTypography', 'SwiftUI', 'ios',
     ],
     icon: [
         '아이콘', 'icon', 'Ico', 'IcoArrowLeft', 'IcoArrowRight', 'IcoSearch', 'IcoHeart',
         'IcoClose', 'IcoAdd', 'IcoDelete', 'IcoEdit', '화살표', '검색', '하트', '별',
         '즐겨찾기', 'IcoStar', 'IcoBookmark', 'IcoCalendar', '날짜', 'IcoFlight', '항공',
         'IcoHotel', '호텔', 'IcoLocationOn', '위치', 'PascalCase', 'IcoCheck',
+        // iOS
+        'iOS아이콘', 'IconComponent', 'DynamicIconStyle', 'ico_', 'snake_case', 'ios',
     ],
     tokens: [
         '토큰', 'token', '색상', 'color', '그림자', 'shadow', 'elevation', '타이포그래피',
