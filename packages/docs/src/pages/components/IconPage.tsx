@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PropsTable } from '../../components/PropsTable';
 import { CodeBlock } from '../../components/CodeBlock';
 import { AntiPatternBlock } from '../../components/AntiPatternBlock';
+import { DesignCheckSection } from '../../components/DesignCheckSection';
 import { ICON_META, ICON_CATEGORIES } from '../../data/components';
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -138,6 +139,9 @@ export default function IconPage() {
           <AntiPatternBlock patterns={ICON_META.antiPatterns} />
         </section>
       )}
+
+      {/* Design Check */}
+      <DesignCheckSection component="Icon" platform="web" />
     </div>
   );
 }

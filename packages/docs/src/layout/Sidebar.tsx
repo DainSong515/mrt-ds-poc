@@ -14,6 +14,7 @@ const NAV_ITEMS: NavEntry[] = [
       { label: 'Text', href: '/components/text' },
       { label: 'Icon', href: '/components/icon' },
       { label: 'Chip', href: '/components/chip' },
+      { label: 'TabBar', href: '/components/tabbar' },
     ],
   },
   {
@@ -22,6 +23,13 @@ const NAV_ITEMS: NavEntry[] = [
       { label: 'Color', href: '/tokens/color' },
       { label: 'Typography', href: '/tokens/typography' },
       { label: 'Shadow', href: '/tokens/shadow' },
+    ],
+  },
+  {
+    group: 'Tools',
+    items: [
+      { label: 'Progress Board', href: '/progress' },
+      { label: 'Design Check', href: '/design-check' },
     ],
   },
 ];

@@ -1,13 +1,37 @@
 import React, { useState } from 'react';
 import { ColorSwatch } from '../../components/ColorSwatch';
+import { FigmaLink } from '../../components/FigmaLink';
+import { PlatformTabs } from '../../components/PlatformTabs';
+import { CodeBlock } from '../../components/CodeBlock';
+import { DesignCheckSection } from '../../components/DesignCheckSection';
 import { parseColorScale, parseSemanticColors } from '../../data/tokens';
 
 const COLOR_GROUPS_ORDER = ['gray', 'blue', 'green', 'yellow', 'red', 'purple', 'black', 'white'];
 
 type TabId = 'scale' | 'semantic';
 
+const IOS_COLOR_EXAMPLE = `// DynamicColor.swift
+enum DynamicColor: String {
+    case gray50  = "#F8F9FA"
+    case gray100 = "#E9ECEF"
+    case gray300 = "#CED4DA"
+    case gray700 = "#495056"
+    case gray1000 = "#101418"
+
+    case blue500 = "#2B96ED"
+    case green500 = "#28A745"
+    case red500 = "#E84118"
+    case yellow500 = "#FFC107"
+    // ...
+}
+
+// 사용 예시
+let bgColor = DynamicColor.gray1000.color
+let textColor = DynamicColor.white.color`;
+
 export default function ColorPage() {
   const [tab, setTab] = useState<TabId>('scale');
+  const [platform, setPlatform] = useState<'web' | 'ios'>('web');
 
   const scaleColors = parseColorScale();
   const semanticColors = parseSemanticColors();
@@ -21,7 +45,36 @@ export default function ColorPage() {
         <p className="mt-2 text-gray-500">
           디자인 시스템의 색상 토큰. Scale 토큰은 원시 값이며, Semantic 토큰은 의도 기반으로 참조한다.
         </p>
+        <FigmaLink url="https://www.figma.com/design/TRtkkl5QJ0ly261AcqyUF9/Myrealtrip-Design-System?node-id=8144-75342" />
       </div>
+
+      <PlatformTabs platform={platform} onChange={setPlatform} />
+
+      {platform === 'ios' ? (
+        <div className="space-y-8">
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-sm space-y-1">
+            <p><span className="font-semibold text-purple-800">Framework:</span> <span className="text-purple-700">UIKit / SwiftUI</span></p>
+            <p><span className="font-semibold text-purple-800">Module:</span> <code className="text-purple-700">CommonLayer/DynamicStyle/DynamicColor.swift</code></p>
+          </div>
+
+          <section>
+            <h2 className="text-base font-semibold text-gray-800 mb-3">DynamicColor enum</h2>
+            <p className="text-sm text-gray-500 mb-3">
+              iOS에서는 DynamicColor enum으로 색상을 관리합니다. 각 케이스가 hex 값을 rawValue로 가집니다.
+            </p>
+            <CodeBlock code={IOS_COLOR_EXAMPLE} />
+          </section>
+
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-yellow-800 mb-1">Web vs iOS 색상 차이</p>
+            <p className="text-sm text-yellow-700">
+              일부 색상이 플랫폼 간 다를 수 있습니다. 예: gray1000 — Web: #141719, iOS: #101418
+            </p>
+          </div>
+
+        </div>
+      ) : (
+      <>
 
       {/* 탭 */}
       <div className="flex gap-1 border-b border-gray-200">
@@ -96,6 +149,12 @@ export default function ColorPage() {
           })}
         </div>
       )}
+
+      </>
+      )}
+
+      {/* Design Check — web + iOS 함께 표시 */}
+      <DesignCheckSection component="Color" />
     </div>
   );
 }

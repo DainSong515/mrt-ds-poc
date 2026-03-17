@@ -3,6 +3,10 @@ import { PropsTable } from '../../components/PropsTable';
 import { CodeBlock } from '../../components/CodeBlock';
 import { AntiPatternBlock } from '../../components/AntiPatternBlock';
 import { LivePreview } from '../../components/LivePreview';
+import { FigmaLink } from '../../components/FigmaLink';
+import { PlatformTabs } from '../../components/PlatformTabs';
+import { IOSSection } from '../../components/iOSSection';
+import { DesignCheckSection } from '../../components/DesignCheckSection';
 import { CHIP_META } from '../../data/components';
 
 type ExampleTab = keyof typeof CHIP_META.usageExamples;
@@ -39,13 +43,24 @@ const FILTER_OPTIONS = ['전체', '항공', '호텔', '투어', '렌터카'];
 export default function ChipPage() {
   const [selectedFilter, setSelectedFilter] = useState('전체');
   const [exampleTab, setExampleTab] = useState<ExampleTab>('기본');
+  const [platform, setPlatform] = useState<'web' | 'ios'>('web');
 
   return (
     <div className="space-y-10">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Chip</h1>
         <p className="mt-2 text-gray-500">{CHIP_META.description}</p>
-        <code className="inline-block mt-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
+        {CHIP_META.figmaUrl && <div><FigmaLink url={CHIP_META.figmaUrl} /></div>}
+      </div>
+
+      <PlatformTabs platform={platform} onChange={setPlatform} />
+
+      {platform === 'ios' && CHIP_META.ios ? (
+        <IOSSection ios={CHIP_META.ios} />
+      ) : (
+      <>
+      <div>
+        <code className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
           import {'{ Chip, ChipGroup }'} from '{CHIP_META.importPath}'
         </code>
       </div>
@@ -103,6 +118,10 @@ export default function ChipPage() {
         <section>
           <AntiPatternBlock patterns={CHIP_META.antiPatterns} />
         </section>
+      )}
+      {/* Design Check */}
+      <DesignCheckSection component="Chip" platform={platform} />
+      </>
       )}
     </div>
   );

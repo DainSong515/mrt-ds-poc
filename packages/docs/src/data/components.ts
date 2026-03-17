@@ -7,19 +7,30 @@ export interface PropMeta {
   required?: boolean;
 }
 
+export interface iOSMeta {
+  importPath: string;
+  modulePath: string;
+  framework: 'UIKit' | 'SwiftUI' | 'Both';
+  props: Record<string, PropMeta>;
+  usageExamples: Record<string, string>;
+}
+
 export interface ComponentMeta {
   name: string;
   importPath: string;
   description: string;
+  figmaUrl?: string;
   props: Record<string, PropMeta>;
   usageExamples: Record<string, string>;
   antiPatterns?: string[];
+  ios?: iOSMeta;
 }
 
 export const BUTTON_META: ComponentMeta = {
   name: 'Button',
   importPath: '@myrealtrip/web-ui',
   description: '마이리얼트립 디자인 시스템의 기본 버튼 컴포넌트. variant로 시각적 스타일을 결정한다.',
+  figmaUrl: 'https://www.figma.com/design/TRtkkl5QJ0ly261AcqyUF9/Myrealtrip-Design-System?node-id=7437-9581',
   props: {
     variant: {
       type: "'primary' | 'primaryOpt' | 'secondary' | 'secondaryOpt' | 'tertiary' | 'tertiaryOpt' | 'text'",
@@ -103,12 +114,64 @@ export const BUTTON_META: ComponentMeta = {
     "❌ <button style={{ backgroundColor: '#141719' }}> — 일반 button 태그 사용 금지",
     "❌ size='sm' — 존재하지 않음. small 사용",
   ],
+  ios: {
+    importPath: 'import BaseComponent',
+    modulePath: 'BaseComponent/ButtonComponent',
+    framework: 'UIKit',
+    props: {
+      style: {
+        type: 'DynamicButtonStyle',
+        description: '버튼 스타일 (primary, secondary, tertiary, text 등)',
+      },
+      title: {
+        type: 'String',
+        description: '버튼 텍스트',
+      },
+      isEnabled: {
+        type: 'Bool',
+        default: 'true',
+        description: '활성화 상태',
+      },
+      leftIcon: {
+        type: 'UIImage?',
+        description: '왼쪽 아이콘 이미지',
+      },
+      rightIcon: {
+        type: 'UIImage?',
+        description: '오른쪽 아이콘 이미지',
+      },
+      action: {
+        type: '(() -> Void)?',
+        description: '탭 이벤트 핸들러',
+      },
+    },
+    usageExamples: {
+      '기본': `let button = ButtonComponent()
+button.configure(
+    style: .primary,
+    title: "로그인"
+)
+button.action = { [weak self] in
+    self?.navigateToLogin()
+}`,
+      '아이콘': `let button = ButtonComponent()
+button.configure(
+    style: .tertiary,
+    title: "뒤로 가기",
+    leftIcon: UIImage(named: "ico_arrow_left")
+)`,
+      '로딩': `let button = ButtonComponent()
+button.configure(style: .primary, title: "예약하기")
+button.isLoading = true  // 로딩 스피너 표시`,
+    },
+  },
 };
 
 export const TEXT_META: ComponentMeta = {
   name: 'Text',
   importPath: '@myrealtrip/web-ui',
   description: '타이포그래피 컴포넌트. typography prop으로 미리 정의된 스타일을 적용한다.',
+  figmaUrl: 'https://www.figma.com/design/TRtkkl5QJ0ly261AcqyUF9/Myrealtrip-Design-System?node-id=8144-74939',
   props: {
     typography: {
       type: 'TypographyVariant',
@@ -151,6 +214,50 @@ export const TEXT_META: ComponentMeta = {
     "❌ <p style={{ fontSize: '16px' }}> — 일반 태그 직접 스타일링 금지",
     "❌ <Text variant='bold'> — variant prop 없음, typography 사용",
   ],
+  ios: {
+    importPath: 'import BaseComponent\nimport DesignLayer',
+    modulePath: 'BaseComponent/TextComponent + DesignLayer/UDTypography',
+    framework: 'Both',
+    props: {
+      style: {
+        type: 'DynamicTextStyle',
+        description: '텍스트 스타일 (headlineBold20, paragraphNormal16 등)',
+      },
+      text: {
+        type: 'String',
+        description: '표시할 텍스트',
+      },
+      numberOfLines: {
+        type: 'Int',
+        default: '0',
+        description: '텍스트 줄 제한 (0은 무제한)',
+      },
+      textColor: {
+        type: 'UIColor',
+        description: '텍스트 색상',
+      },
+      textAlignment: {
+        type: 'NSTextAlignment',
+        default: '.natural',
+        description: '텍스트 정렬',
+      },
+    },
+    usageExamples: {
+      '기본 (UIKit)': `let label = TextComponent()
+label.configure(
+    style: .paragraphNormal16,
+    text: "안녕하세요"
+)`,
+      '제목': `let titleLabel = TextComponent()
+titleLabel.configure(
+    style: .headlineBold20,
+    text: "제주도 3박 4일 패키지"
+)`,
+      'SwiftUI (UDTypography)': `Text("상품 제목")
+    .font(UDTypography.headlineBold20)
+    .foregroundColor(.udGray1000)`,
+    },
+  },
 };
 
 export const ICON_META: ComponentMeta = {
@@ -186,6 +293,47 @@ export const ICON_META: ComponentMeta = {
     "❌ <Icon name='arrow-left'> — kebab-case 사용 금지, IcoArrowLeft 사용",
     "❌ <Icon name='ArrowLeft'> — Ico 접두사 필수",
   ],
+  ios: {
+    importPath: 'import BaseComponent',
+    modulePath: 'BaseComponent/IconComponent',
+    framework: 'UIKit',
+    props: {
+      style: {
+        type: 'DynamicIconStyle',
+        description: '아이콘 스타일 (이름, 크기, 색상 포함)',
+      },
+      iconName: {
+        type: 'String',
+        required: true,
+        description: '아이콘 이름. ico_ 접두사 + snake_case. 예: ico_arrow_left, ico_search',
+      },
+      size: {
+        type: 'CGFloat',
+        description: '아이콘 크기(pt)',
+      },
+      tintColor: {
+        type: 'UIColor',
+        description: '아이콘 틴트 색상',
+      },
+    },
+    usageExamples: {
+      '기본': `let icon = IconComponent()
+icon.configure(
+    style: DynamicIconStyle(
+        name: "ico_search",
+        size: 24
+    )
+)`,
+      '색상': `let icon = IconComponent()
+icon.configure(
+    style: DynamicIconStyle(
+        name: "ico_heart",
+        size: 20,
+        tintColor: .udRed500
+    )
+)`,
+    },
+  },
 };
 
 // 아이콘 카테고리별 목록
@@ -202,6 +350,7 @@ export const CHIP_META: ComponentMeta = {
   name: 'Chip',
   importPath: '@myrealtrip/web-ui',
   description: '선택 상태를 나타내는 칩 컴포넌트. 필터, 태그, 카테고리 선택에 사용.',
+  figmaUrl: 'https://www.figma.com/design/TRtkkl5QJ0ly261AcqyUF9/Myrealtrip-Design-System?node-id=11651-107058',
   props: {
     label: {
       type: 'string',
@@ -239,4 +388,147 @@ export const CHIP_META: ComponentMeta = {
     "❌ variant='filled' — variant prop 없음",
     "❌ <button className='chip'> — 일반 태그 직접 사용 금지",
   ],
+  ios: {
+    importPath: 'import BaseComponent',
+    modulePath: 'BaseComponent/TagComponent',
+    framework: 'UIKit',
+    props: {
+      style: {
+        type: 'DynamicTagStyle',
+        description: '태그 스타일 (선택/비선택 상태, 크기 등)',
+      },
+      title: {
+        type: 'String',
+        required: true,
+        description: '태그에 표시할 텍스트',
+      },
+      isSelected: {
+        type: 'Bool',
+        default: 'false',
+        description: '선택 상태',
+      },
+      isEnabled: {
+        type: 'Bool',
+        default: 'true',
+        description: '활성화 상태',
+      },
+      action: {
+        type: '(() -> Void)?',
+        description: '탭 이벤트 핸들러',
+      },
+    },
+    usageExamples: {
+      '기본': `let tag = TagComponent()
+tag.configure(
+    style: .default,
+    title: "제주도"
+)
+tag.isSelected = false
+tag.action = { [weak self] in
+    self?.toggleFilter()
+}`,
+      '그룹': `let tags = ["전체", "항공", "호텔"].map { title -> TagComponent in
+    let tag = TagComponent()
+    tag.configure(style: .default, title: title)
+    return tag
+}
+// StackView에 추가
+tags.forEach { stackView.addArrangedSubview($0) }`,
+    },
+  },
+};
+
+export const TABBAR_META: ComponentMeta = {
+  name: 'TabBar',
+  importPath: '@myrealtrip/web-ui',
+  description: '탭 네비게이션 컴포넌트. 숙소/항공/투어 등 카테고리 전환에 사용. Line/Pill 두 가지 형태 지원.',
+  figmaUrl: 'https://www.figma.com/design/TRtkkl5QJ0ly261AcqyUF9/Myrealtrip-Design-System?node-id=7509-27151&t=00gOe2mI1g4NKsgL-4',
+  props: {
+    tabs: {
+      type: 'TabItem[]',
+      required: true,
+      description: '탭 목록. { key, label, badge?, disabled? }',
+    },
+    activeKey: {
+      type: 'string',
+      required: true,
+      description: '현재 선택된 탭의 key',
+    },
+    onChange: {
+      type: '(key: string) => void',
+      required: true,
+      description: '탭 변경 콜백',
+    },
+    size: {
+      type: "'medium' | 'small'",
+      default: "'medium'",
+      description: '탭 크기 (medium: 44px, small: 36px)',
+    },
+  },
+  usageExamples: {
+    기본: `import { TabBar } from '@myrealtrip/web-ui';
+
+const tabs = [
+  { key: 'all', label: '전체' },
+  { key: 'flight', label: '항공' },
+  { key: 'hotel', label: '숙소' },
+];
+
+<TabBar tabs={tabs} activeKey={active} onChange={setActive} />`,
+    뱃지: `<TabBar
+  tabs={[
+    { key: 'all', label: '전체' },
+    { key: 'new', label: '신규', badge: true },
+    { key: 'promo', label: '프로모션' },
+  ]}
+  activeKey={active}
+  onChange={setActive}
+/>`,
+  },
+  antiPatterns: [
+    "❌ <div onClick> 으로 탭 직접 구현 — TabBar 사용",
+    "❌ variant='pill' — 아직 Pill variant 미구현 (Figma에만 존재)",
+  ],
+  ios: {
+    importPath: 'import TabContainerManager',
+    modulePath: 'TabContainerManager/CommonTabBarView + SwiftUITabBarView',
+    framework: 'Both',
+    props: {
+      tabs: {
+        type: '[TabItem]',
+        required: true,
+        description: '탭 목록. TabItem(key, title, badge?, isEnabled?)',
+      },
+      selectedIndex: {
+        type: 'Int',
+        required: true,
+        description: '현재 선택된 탭 인덱스',
+      },
+      onTabSelected: {
+        type: '((Int) -> Void)?',
+        description: '탭 선택 콜백',
+      },
+    },
+    usageExamples: {
+      '기본 (UIKit)': `let tabBar = CommonTabBarView()
+tabBar.configure(
+    tabs: [
+        TabItem(key: "all", title: "전체"),
+        TabItem(key: "flight", title: "항공"),
+        TabItem(key: "hotel", title: "숙소"),
+    ]
+)
+tabBar.onTabSelected = { [weak self] index in
+    self?.switchTab(to: index)
+}`,
+      'SwiftUI': `SwiftUITabBarView(
+    tabs: [
+        TabItem(key: "all", title: "전체"),
+        TabItem(key: "flight", title: "항공"),
+        TabItem(key: "hotel", title: "숙소"),
+    ],
+    selectedIndex: $selectedTab
+)`,
+    },
+  },
 };

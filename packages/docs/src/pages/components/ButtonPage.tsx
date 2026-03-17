@@ -3,6 +3,10 @@ import { PropsTable } from '../../components/PropsTable';
 import { CodeBlock } from '../../components/CodeBlock';
 import { AntiPatternBlock } from '../../components/AntiPatternBlock';
 import { LivePreview } from '../../components/LivePreview';
+import { FigmaLink } from '../../components/FigmaLink';
+import { PlatformTabs } from '../../components/PlatformTabs';
+import { IOSSection } from '../../components/iOSSection';
+import { DesignCheckSection } from '../../components/DesignCheckSection';
 import { BUTTON_META } from '../../data/components';
 import buttonComponent from '@tokens/component/button.component.json';
 
@@ -81,6 +85,7 @@ export default function ButtonPage() {
   const [exampleTab, setExampleTab] = useState<ExampleTab>('기본');
   const [previewSize, setPreviewSize] = useState<Size>('medium');
   const [previewDisabled, setPreviewDisabled] = useState(false);
+  const [platform, setPlatform] = useState<'web' | 'ios'>('web');
   const tokenRows = parseButtonTokens();
 
   return (
@@ -88,7 +93,17 @@ export default function ButtonPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Button</h1>
         <p className="mt-2 text-gray-500">{BUTTON_META.description}</p>
-        <code className="inline-block mt-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
+        {BUTTON_META.figmaUrl && <div><FigmaLink url={BUTTON_META.figmaUrl} /></div>}
+      </div>
+
+      <PlatformTabs platform={platform} onChange={setPlatform} />
+
+      {platform === 'ios' && BUTTON_META.ios ? (
+        <IOSSection ios={BUTTON_META.ios} />
+      ) : (
+      <>
+      <div>
+        <code className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
           import {'{ Button }'} from '{BUTTON_META.importPath}'
         </code>
       </div>
@@ -191,6 +206,10 @@ export default function ButtonPage() {
           </table>
         </div>
       </section>
+      {/* Design Check */}
+      <DesignCheckSection component="Button" platform={platform} />
+      </>
+      )}
     </div>
   );
 }

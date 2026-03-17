@@ -7,9 +7,12 @@ const ButtonPage = lazy(() => import('./pages/components/ButtonPage'));
 const TextPage = lazy(() => import('./pages/components/TextPage'));
 const IconPage = lazy(() => import('./pages/components/IconPage'));
 const ChipPage = lazy(() => import('./pages/components/ChipPage'));
+const TabBarPage = lazy(() => import('./pages/components/TabBarPage'));
 const ColorPage = lazy(() => import('./pages/tokens/ColorPage'));
 const TypographyPage = lazy(() => import('./pages/tokens/TypographyPage'));
 const ShadowPage = lazy(() => import('./pages/tokens/ShadowPage'));
+const ProgressBoardPage = lazy(() => import('./pages/ProgressBoardPage'));
+const DesignCheckPage = lazy(() => import('./pages/DesignCheckPage'));
 
 function LoadingFallback() {
   return (
@@ -30,9 +33,12 @@ export default function App() {
             <Route path="components/text" element={<TextPage />} />
             <Route path="components/icon" element={<IconPage />} />
             <Route path="components/chip" element={<ChipPage />} />
+            <Route path="components/tabbar" element={<TabBarPage />} />
             <Route path="tokens/color" element={<ColorPage />} />
             <Route path="tokens/typography" element={<TypographyPage />} />
             <Route path="tokens/shadow" element={<ShadowPage />} />
+            <Route path="progress" element={<ProgressBoardPage />} />
+            <Route path="design-check" element={<DesignCheckPage />} />
           </Route>
         </Routes>
       </Suspense>

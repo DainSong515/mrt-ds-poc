@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { PropsTable } from '../../components/PropsTable';
 import { CodeBlock } from '../../components/CodeBlock';
 import { AntiPatternBlock } from '../../components/AntiPatternBlock';
+import { FigmaLink } from '../../components/FigmaLink';
+import { PlatformTabs } from '../../components/PlatformTabs';
+import { IOSSection } from '../../components/iOSSection';
+import { DesignCheckSection } from '../../components/DesignCheckSection';
 import { TEXT_META } from '../../data/components';
 import { parseTypography } from '../../data/tokens';
 
@@ -25,6 +29,7 @@ export default function TextPage() {
   const [exampleTab, setExampleTab] = useState<ExampleTab>('기본');
   const [previewColor, setPreviewColor] = useState('#141719');
   const [lineClamp, setLineClamp] = useState(0);
+  const [platform, setPlatform] = useState<'web' | 'ios'>('web');
 
   const typographies = parseTypography();
 
@@ -33,7 +38,17 @@ export default function TextPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Text</h1>
         <p className="mt-2 text-gray-500">{TEXT_META.description}</p>
-        <code className="inline-block mt-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
+        {TEXT_META.figmaUrl && <div><FigmaLink url={TEXT_META.figmaUrl} /></div>}
+      </div>
+
+      <PlatformTabs platform={platform} onChange={setPlatform} />
+
+      {platform === 'ios' && TEXT_META.ios ? (
+        <IOSSection ios={TEXT_META.ios} />
+      ) : (
+      <>
+      <div>
+        <code className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
           import {'{ Text }'} from '{TEXT_META.importPath}'
         </code>
       </div>
@@ -142,6 +157,10 @@ export default function TextPage() {
         <section>
           <AntiPatternBlock patterns={TEXT_META.antiPatterns} />
         </section>
+      )}
+      {/* Design Check */}
+      <DesignCheckSection component="Text" platform={platform} />
+      </>
       )}
     </div>
   );
